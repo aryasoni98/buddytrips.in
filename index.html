@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/wooak-design-system-8f397fde-8385-4531-9f29-83d01d526f1d/colors_and_type.css">
+<script src="_ds/wooak-design-system-8f397fde-8385-4531-9f29-83d01d526f1d/_ds_bundle.js"></script>
+<script src="image-slot.js"></script>
+<style>
+  image-slot { --is-bg: var(--bg-muted); }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-sans); overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  ::selection { background: rgba(34,197,94,0.22); }
+  @keyframes bt-float    { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+  @keyframes bt-floatB   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-26px); } }
+  @keyframes bt-floatC   { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-14px) rotate(-3deg); } }
+  @keyframes bt-orb      { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(40px,-30px) scale(1.08); } 66% { transform: translate(-30px,24px) scale(0.96); } }
+  @keyframes bt-spin     { to { transform: rotate(360deg); } }
+  @keyframes bt-pulse    { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.35; } }
+  @keyframes bt-marquee  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes bt-grad     { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @keyframes bt-ken      { 0%,100% { transform: scale(1.03); } 50% { transform: scale(1.1); } }
+  @keyframes bt-kenpan   { 0% { transform: scale(1.06) translate(0,0); } 50% { transform: scale(1.13) translate(-2%,-1.4%); } 100% { transform: scale(1.06) translate(0,0); } }
+  @keyframes bt-kenpanB  { 0% { transform: scale(1.06) translate(0,0); } 50% { transform: scale(1.12) translate(2%,-1%); } 100% { transform: scale(1.06) translate(0,0); } }
+  @keyframes bt-sun      { 0%,100% { transform: translateY(0); opacity: 0.96; } 50% { transform: translateY(-7px); opacity: 1; } }
+  @keyframes bt-drift    { 0%,100% { transform: translateX(0); } 50% { transform: translateX(-13px); } }
+  @keyframes bt-driftB   { 0%,100% { transform: translateX(0); } 50% { transform: translateX(11px); } }
+  @keyframes bt-cloudA   { from { transform: translateX(-180px); } to { transform: translateX(800px); } }
+  @keyframes bt-bird     { from { transform: translate(-60px,10px); } to { transform: translate(740px,-30px); } }
+  @keyframes bt-plane    { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+  @keyframes bt-trail    { to { stroke-dashoffset: -160; } }
+  @keyframes bt-fall     { to { stroke-dashoffset: -28; } }
+  @keyframes bt-shimmer  { 0%,100% { opacity: 0.35; transform: translateX(0); } 50% { opacity: 0.6; transform: translateX(8px); } }
+  @media (prefers-reduced-motion: reduce) {
+    [style*="animation"] { animation: none !important; }
+  }
+</style>
+</helmet>
+
+<div id="bt-root" data-theme="light" style="position:relative; background:var(--bg); min-height:100vh;">
+
+  <!-- ============ NAV ============ -->
+  <nav id="bt-nav" style="position:fixed; top:0; left:0; right:0; z-index:60; padding:14px 0; transition:padding 300ms var(--ease-out-quint), background 300ms ease, box-shadow 300ms ease, border-color 300ms ease; border-bottom:1px solid transparent;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between;">
+      <a href="#top" style="display:flex; align-items:center; gap:10px;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px;">
+          <img src="images/brand/buddytrips-mark.png" alt="Buddy Trips logo" style="width:100%; height:100%; object-fit:contain; display:block;">
+        </span>
+        <span style="font-size:21px; font-weight:700; letter-spacing:-0.03em; color:var(--fg);">buddytrips</span>
+      </a>
+      <div id="bt-navlinks" style="display:flex; align-items:center; gap:34px;">
+        <a href="#destinations" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Destinations</a>
+        <a href="#explore" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Regions</a>
+        <a href="#tours" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Tours</a>
+        <a href="#why" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Why us</a>
+        <a href="#reviews" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Reviews</a>
+      </div>
+      <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:9px; padding:11px 20px; border-radius:999px; background:var(--wk-gradient); color:#fff; font-size:15px; font-weight:600; box-shadow:0 8px 22px -8px rgba(30,100,230,0.55); transition:transform 200ms var(--ease-out-quint), box-shadow 200ms;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 12px 28px -8px rgba(34,197,94,0.6)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 8px 22px -8px rgba(30,100,230,0.55)';">
+        <span style="width:7px; height:7px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 8px var(--wk-spark-500);"></span>
+        Start your journey
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="position:relative; padding:172px 0 96px; overflow:hidden;">
+    <!-- orbs -->
+    <div id="bt-orbs" style="position:absolute; inset:0; z-index:0; pointer-events:none;">
+      <div style="position:absolute; top:-60px; left:-40px; width:480px; height:480px; border-radius:50%; background:radial-gradient(circle at 30% 30%, rgba(30,100,230,0.45), transparent 70%); filter:blur(50px); animation:bt-orb 20s var(--ease-in-out) infinite;"></div>
+      <div style="position:absolute; top:120px; right:-60px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle at 60% 40%, rgba(34,197,94,0.40), transparent 70%); filter:blur(55px); animation:bt-orb 24s var(--ease-in-out) infinite reverse;"></div>
+      <div style="position:absolute; bottom:-40px; left:42%; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(249,115,22,0.30), transparent 70%); filter:blur(50px); animation:bt-orb 18s var(--ease-in-out) infinite;"></div>
+    </div>
+
+    <div style="position:relative; z-index:2; max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;">
+      <!-- copy -->
+      <div>
+        <div data-reveal style="display:inline-flex; align-items:center; gap:9px; padding:8px 15px; border-radius:999px; background:rgba(255,255,255,0.6); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7); box-shadow:var(--shadow-sm); margin-bottom:26px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 8px var(--wk-spark-500); animation:bt-pulse 1.8s var(--ease-in-out) infinite;"></span>
+          <span style="font-size:13px; font-weight:600; letter-spacing:0.04em; color:var(--fg);">Welcome to Buddy Trips</span>
+        </div>
+        <h1 data-reveal data-delay="80" style="margin:0 0 22px; font-family:var(--font-display); font-weight:700; font-size:clamp(44px,5.4vw,76px); line-height:0.98; letter-spacing:-0.028em; color:var(--fg);">Discover incredible<br><span class="wk-text-gradient wk-text-gradient--animate">India</span>. Your<br>adventure awaits.</h1>
+        <p data-reveal data-delay="160" style="margin:0 0 34px; max-width:480px; font-size:19px; line-height:1.55; color:var(--fg-muted);">From Himalayan peaks to golden deserts — explore India's hidden gems. Authentic adventures, unforgettable memories.</p>
+        <div data-reveal data-delay="240" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:42px;">
+          <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:11px; padding:15px 26px; border-radius:999px; background:var(--wk-gradient); color:#fff; font-size:16px; font-weight:600; box-shadow:0 14px 34px -10px rgba(30,100,230,0.55); transition:transform 200ms var(--ease-out-quint), box-shadow 200ms;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 20px 40px -10px rgba(34,197,94,0.6)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 14px 34px -10px rgba(30,100,230,0.55)';">
+            <span style="width:8px; height:8px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 10px var(--wk-spark-500);"></span>
+            Start your journey
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7.5 15 12.5 10 7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#tours" style="display:inline-flex; align-items:center; gap:10px; padding:15px 24px; border-radius:999px; background:rgba(255,255,255,0.55); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7); color:var(--fg); font-size:16px; font-weight:600; box-shadow:var(--shadow-sm); transition:transform 200ms var(--ease-out-quint);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <span style="display:inline-flex; width:24px; height:24px; align-items:center; justify-content:center; border-radius:50%; background:var(--wk-gradient-soft); color:var(--wk-blue-500); font-size:11px;">▷</span>
+            Explore tours
+          </a>
+        </div>
+        <div data-reveal data-delay="320" style="display:flex; align-items:center; gap:30px;">
+          <div><div style="font-size:26px; font-weight:700; letter-spacing:-0.02em; color:var(--fg);">25k+</div><div style="font-size:13px; color:var(--fg-muted);">Happy travelers</div></div>
+          <div style="width:1px; height:34px; background:var(--border);"></div>
+          <div><div style="font-size:26px; font-weight:700; letter-spacing:-0.02em; color:var(--fg);">150+</div><div style="font-size:13px; color:var(--fg-muted);">Destinations</div></div>
+          <div style="width:1px; height:34px; background:var(--border);"></div>
+          <div><div style="font-size:26px; font-weight:700; letter-spacing:-0.02em; color:var(--fg);">4.8★</div><div style="font-size:13px; color:var(--fg-muted);">Avg rating</div></div>
+        </div>
+      </div>
+
+      <!-- glass image collage -->
+      <div data-reveal data-delay="120" style="position:relative; height:540px;">
+        <div style="position:absolute; top:0; left:8%; width:62%; height:330px; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid rgba(255,255,255,0.6); animation:bt-float 7s var(--ease-in-out) infinite;">
+          <img src="images/hero/manali_kasol.jpg" alt="Manali &amp; Kasol" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
+          <div style="position:absolute; left:14px; bottom:14px; padding:8px 14px; border-radius:12px; background:rgba(255,255,255,0.6); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7);"><div style="font-size:14px; font-weight:700; color:#0A0A0A;">Manali &amp; Kasol</div><div style="font-size:11px; color:rgba(10,10,10,0.6);">Himachal Pradesh</div></div>
+        </div>
+        <div style="position:absolute; top:188px; right:0; width:46%; height:240px; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid rgba(255,255,255,0.6); animation:bt-floatB 8s var(--ease-in-out) infinite; animation-delay:-2s;">
+          <img src="images/hero/chopta_tungnath.jpg" alt="Chopta &amp; Tungnath" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 24s ease-in-out infinite;">
+          <div style="position:absolute; left:12px; bottom:12px; padding:7px 12px; border-radius:12px; background:rgba(255,255,255,0.6); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7);"><div style="font-size:13px; font-weight:700; color:#0A0A0A;">Chopta &amp; Tungnath</div></div>
+        </div>
+        <div style="position:absolute; bottom:0; left:0; width:42%; height:200px; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-lg); border:1px solid rgba(255,255,255,0.6); animation:bt-floatC 9s var(--ease-in-out) infinite; animation-delay:-1s;">
+          <img src="images/hero/kedarkantha.jpg" alt="Kedarkantha" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 28s ease-in-out -5s infinite;">
+        </div>
+        <!-- floating glass stat chip -->
+        <div style="position:absolute; top:142px; left:-10px; z-index:5; display:flex; align-items:center; gap:11px; padding:12px 16px; border-radius:16px; background:rgba(255,255,255,0.62); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); border:1px solid rgba(255,255,255,0.75); box-shadow:var(--shadow-lg); animation:bt-float 6s var(--ease-in-out) infinite; animation-delay:-3s;">
+          <div style="display:flex;">
+            <span style="width:30px; height:30px; border-radius:50%; background:var(--wk-gradient); border:2px solid #fff;"></span>
+            <span style="width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#4A9CFF,#4ADE80); border:2px solid #fff; margin-left:-10px;"></span>
+            <span style="width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#F97316,#FDBA74); border:2px solid #fff; margin-left:-10px;"></span>
+          </div>
+          <div><div style="font-size:14px; font-weight:700; color:#0A0A0A; line-height:1.1;">500+ trips</div><div style="font-size:11px; color:rgba(10,10,10,0.6);">completed this year</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div style="position:relative; padding:18px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; background:var(--bg-muted);">
+    <div style="display:flex; width:max-content; gap:48px; animation:bt-marquee 38s linear infinite;">
+      <div style="display:flex; gap:48px; align-items:center; font-family:var(--font-display); font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--fg-subtle);">
+        <span>Himalayan treks</span><span style="color:var(--wk-spark-500);">✦</span><span>Golden deserts</span><span style="color:var(--wk-spark-500);">✦</span><span>Living root bridges</span><span style="color:var(--wk-spark-500);">✦</span><span>Lake palaces</span><span style="color:var(--wk-spark-500);">✦</span><span>Snow trails</span><span style="color:var(--wk-spark-500);">✦</span>
+      </div>
+      <div aria-hidden="true" style="display:flex; gap:48px; align-items:center; font-family:var(--font-display); font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--fg-subtle);">
+        <span>Himalayan treks</span><span style="color:var(--wk-spark-500);">✦</span><span>Golden deserts</span><span style="color:var(--wk-spark-500);">✦</span><span>Living root bridges</span><span style="color:var(--wk-spark-500);">✦</span><span>Lake palaces</span><span style="color:var(--wk-spark-500);">✦</span><span>Snow trails</span><span style="color:var(--wk-spark-500);">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DESTINATIONS ============ -->
+  <section id="destinations" style="position:relative; padding:96px 0;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 32px;">
+      <div data-reveal style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--wk-blue-500); margin-bottom:14px;">Destinations</div>
+        <h2 style="margin:0 0 16px; font-family:var(--font-display); font-weight:700; font-size:clamp(32px,3.6vw,46px); line-height:1.05; letter-spacing:-0.02em; color:var(--fg);">Discover India's top destinations</h2>
+        <p style="margin:0; font-size:18px; line-height:1.55; color:var(--fg-muted);">From majestic mountains to golden deserts — India's incredible diversity, one trip at a time.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:230px 230px; gap:20px;">
+        <a href="#" data-reveal class="bt-dest" style="grid-row:span 2; position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
+          <img src="images/destinations/himachal_pradesh.png" alt="Himachal Pradesh" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 55%);"></div>
+          <div style="position:absolute; left:20px; right:20px; bottom:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px;">
+            <div><div style="font-size:24px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Himachal Pradesh</div><div style="font-size:13px; color:rgba(255,255,255,0.78);">8 listings</div></div>
+            <span class="bt-arrow" style="display:inline-flex; width:42px; height:42px; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.85); backdrop-filter:blur(10px); color:#0A0A0A; transition:background 200ms, transform 200ms;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </div>
+        </a>
+        <a href="#" data-reveal data-delay="80" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
+          <img src="images/destinations/uttarakhand.png" alt="Uttarakhand" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 22s ease-in-out infinite;">
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
+          <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Uttarakhand</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">12 listings</div></div>
+        </a>
+        <a href="#" data-reveal data-delay="160" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
+          <img src="images/destinations/jammu_kashmir.png" alt="Jammu & Kashmir" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 24s ease-in-out -6s infinite;">
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
+          <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Jammu &amp; Kashmir</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">5 listings</div></div>
+        </a>
+        <a href="#" data-reveal data-delay="80" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
+          <img src="images/destinations/rajasthan.png" alt="Rajasthan" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 28s ease-in-out -10s infinite;">
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
+          <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Rajasthan</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">6 listings</div></div>
+        </a>
+        <a href="#" data-reveal data-delay="160" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
+          <img src="images/destinations/meghalaya.png" alt="Meghalaya" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 23s ease-in-out -4s infinite;">
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
+          <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Meghalaya</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">4 listings</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPLORE BY REGION ============ -->
+  <section id="explore" style="position:relative; padding:96px 0; overflow:hidden;">
+    <div style="position:absolute; top:8%; left:-90px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(30,100,230,0.14),transparent 70%); filter:blur(55px); z-index:0;"></div>
+    <div style="position:absolute; bottom:4%; right:-90px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(34,197,94,0.14),transparent 70%); filter:blur(55px); z-index:0;"></div>
+    <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 32px;">
+      <div data-reveal style="text-align:center; max-width:660px; margin:0 auto 44px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--wk-blue-500); margin-bottom:14px;">Explore by region</div>
+        <h2 style="margin:0 0 16px; font-family:var(--font-display); font-weight:700; font-size:clamp(32px,3.6vw,46px); line-height:1.05; letter-spacing:-0.02em; color:var(--fg);">A closer look at every region</h2>
+        <p style="margin:0; font-size:18px; line-height:1.55; color:var(--fg-muted);">Signature spots, the months worth booking, and the views waiting for you.</p>
+      </div>
+      <div id="bt-region-tabs" data-reveal style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:34px;"></div>
+      <div id="bt-region-panel" data-reveal data-delay="80" style="position:relative; border-radius:24px; overflow:hidden; background:rgba(255,255,255,0.5); backdrop-filter:blur(18px) saturate(150%); -webkit-backdrop-filter:blur(18px) saturate(150%); border:1px solid var(--border-soft); box-shadow:var(--shadow-lg);"></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED TOURS ============ -->
+  <section id="tours" style="position:relative; padding:96px 0; background:var(--bg-muted);">
+    <div style="max-width:1280px; margin:0 auto; padding:0 32px;">
+      <div data-reveal style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:48px; flex-wrap:wrap;">
+        <div style="max-width:600px;">
+          <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--wk-blue-500); margin-bottom:14px;">Featured tours</div>
+          <h2 style="margin:0 0 14px; font-family:var(--font-display); font-weight:700; font-size:clamp(32px,3.6vw,46px); line-height:1.05; letter-spacing:-0.02em; color:var(--fg);">Featured adventure tours</h2>
+          <p style="margin:0; font-size:18px; line-height:1.55; color:var(--fg-muted);">Handpicked adventures across India. From thrilling treks to cultural journeys.</p>
+        </div>
+        <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:9px; padding:12px 22px; border-radius:999px; border:1px solid var(--border-strong); color:var(--fg); font-size:15px; font-weight:600; transition:background 200ms, transform 200ms;" onmouseover="this.style.background='var(--bg-elevated)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='transparent'; this.style.transform='none';">View all tours <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M7.5 15 12.5 10 7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div id="bt-tours-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;"></div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section id="why" style="position:relative; padding:96px 0; overflow:hidden;">
+    <div style="position:absolute; top:10%; right:-80px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle,rgba(34,197,94,0.18),transparent 70%); filter:blur(50px); z-index:0;"></div>
+    <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;">
+      <!-- floating images -->
+      <div data-reveal style="position:relative; height:480px;">
+        <div style="position:absolute; top:0; left:0; width:74%; height:360px; border-radius:28px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid rgba(255,255,255,0.6); animation:bt-float 7s var(--ease-in-out) infinite;">
+          <img src="images/why/valley.jpg" alt="Himalayan river valley" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
+        </div>
+        <div style="position:absolute; bottom:10px; right:0; width:50%; height:240px; border-radius:140px; overflow:hidden; box-shadow:var(--shadow-lg); border:4px solid var(--bg); animation:bt-floatB 8s var(--ease-in-out) infinite; animation-delay:-2s;">
+          <img src="images/why/temple.jpg" alt="Himalayan ridge temple" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 24s ease-in-out -4s infinite;">
+        </div>
+        <!-- glass trust badge -->
+        <div style="position:absolute; left:8px; bottom:36px; z-index:4; display:flex; align-items:center; gap:13px; padding:14px 18px; border-radius:16px; background:rgba(255,255,255,0.62); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); border:1px solid rgba(255,255,255,0.75); box-shadow:var(--shadow-lg); animation:bt-float 6s var(--ease-in-out) infinite; animation-delay:-3s;">
+          <span style="display:inline-flex; width:42px; height:42px; align-items:center; justify-content:center; border-radius:50%; background:var(--wk-gradient); color:#fff;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div style="line-height:1.2;"><div style="font-size:15px; font-weight:700; color:#0A0A0A;">Trusted by</div><div style="font-size:12px; color:rgba(10,10,10,0.6);">thousands of happy travelers</div></div>
+        </div>
+        <!-- spinning dashed ring badge -->
+        <div style="position:absolute; bottom:-6px; left:46%; width:84px; height:84px; border-radius:50%; background:var(--bg-muted); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md);">
+          <div style="position:absolute; inset:8px; border:2px dashed var(--wk-green-300); border-radius:50%; animation:bt-spin 20s linear infinite;"></div>
+          <span style="display:inline-flex; width:52px; height:52px; align-items:center; justify-content:center; border-radius:50%; background:var(--wk-gradient); color:#fff;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </div>
+      </div>
+      <!-- text -->
+      <div data-reveal data-delay="120">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--wk-blue-500); margin-bottom:14px;">Why choose us</div>
+        <h2 style="margin:0 0 16px; font-family:var(--font-display); font-weight:700; font-size:clamp(30px,3.2vw,42px); line-height:1.06; letter-spacing:-0.02em; color:var(--fg);">Why choose Buddy Trips</h2>
+        <p style="margin:0 0 36px; font-size:18px; line-height:1.55; color:var(--fg-muted);">Your trusted travel partner for exploring Incredible India. Expert guidance, personalized service, unforgettable memories.</p>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; gap:18px; padding:22px; border-radius:16px; background:rgba(255,255,255,0.5); backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%); border:1px solid var(--border-soft); box-shadow:var(--shadow-sm);">
+            <span style="flex:none; display:inline-flex; width:54px; height:54px; align-items:center; justify-content:center; border-radius:14px; background:var(--wk-gradient); color:#fff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span>
+            <div><h3 style="margin:0 0 6px; font-size:19px; font-weight:600; letter-spacing:-0.01em; color:var(--fg);">Curated Indian experiences</h3><p style="margin:0; font-size:15px; line-height:1.55; color:var(--fg-muted);">Carefully selected destinations across India — from the majestic Himalayas to pristine beaches, customized for you.</p></div>
+          </div>
+          <div style="display:flex; gap:18px; padding:22px; border-radius:16px; background:rgba(255,255,255,0.5); backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%); border:1px solid var(--border-soft); box-shadow:var(--shadow-sm);">
+            <span style="flex:none; display:inline-flex; width:54px; height:54px; align-items:center; justify-content:center; border-radius:14px; background:var(--wk-gradient); color:#fff;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11z"/></svg></span>
+            <div><h3 style="margin:0 0 6px; font-size:19px; font-weight:600; letter-spacing:-0.01em; color:var(--fg);">Expert local guides</h3><p style="margin:0; font-size:15px; line-height:1.55; color:var(--fg-muted);">Experienced guides who know India's hidden gems and cultural heritage inside out.</p></div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:22px; margin-top:32px; flex-wrap:wrap;">
+          <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; background:var(--wk-gradient); color:#fff; font-size:16px; font-weight:600; box-shadow:0 12px 30px -10px rgba(30,100,230,0.5); transition:transform 200ms var(--ease-out-quint);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">Start booking</a>
+          <div style="display:flex; align-items:baseline; gap:8px;"><span style="font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--fg);">25k+</span><span style="font-size:14px; color:var(--fg-muted); max-width:120px; line-height:1.3;">happy travelers across India</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ METRICS BAND ============ -->
+  <section style="padding:0 32px;">
+    <div data-reveal style="position:relative; max-width:1280px; margin:0 auto; border-radius:28px; overflow:hidden; background:var(--wk-gradient); box-shadow:var(--shadow-xl);">
+      <svg style="position:absolute; inset:0; width:100%; height:100%; opacity:0.4; mix-blend-mode:overlay;"><filter id="bt-noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#bt-noise)"/></svg>
+      <div style="position:relative; z-index:1; padding:64px 48px; display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
+        <div style="text-align:center;"><div class="bt-count" data-count="25" data-suffix="k+" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Happy travelers</div></div>
+        <div style="text-align:center;"><div class="bt-count" data-count="150" data-suffix="+" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Destinations covered</div></div>
+        <div style="text-align:center;"><div class="bt-count" data-count="500" data-suffix="+" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Successful trips</div></div>
+        <div style="text-align:center;"><div class="bt-count" data-count="98" data-suffix="%" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Satisfaction rate</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section id="reviews" style="position:relative; padding:96px 0;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 32px;">
+      <div data-reveal style="text-align:center; max-width:620px; margin:0 auto 56px;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--wk-blue-500); margin-bottom:14px;">Reviews</div>
+        <h2 style="margin:0 0 16px; font-family:var(--font-display); font-weight:700; font-size:clamp(32px,3.6vw,46px); line-height:1.05; letter-spacing:-0.02em; color:var(--fg);">Loved by travelers across India</h2>
+      </div>
+      <div id="bt-reviews-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:start;"></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section style="padding:0 32px 96px;">
+    <div data-reveal style="position:relative; max-width:1280px; margin:0 auto; border-radius:32px; overflow:hidden; background:var(--bg-inverse); box-shadow:var(--shadow-xl);">
+      <div style="position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:680px; height:680px; border-radius:50%; background:var(--wk-gradient-conic); filter:blur(70px); opacity:0.55; animation:bt-spin 30s linear infinite;"></div>
+      <div style="position:relative; z-index:1; padding:88px 32px; text-align:center;">
+        <h2 style="margin:0 auto 18px; max-width:760px; font-family:var(--font-display); font-weight:700; font-size:clamp(36px,4.4vw,60px); line-height:1.04; letter-spacing:-0.024em; color:#fff;">Your next adventure starts with <span class="wk-text-gradient wk-text-gradient--animate">better trips</span>.</h2>
+        <p style="margin:0 auto 36px; max-width:520px; font-size:19px; line-height:1.5; color:rgba(255,255,255,0.72);">Tell us where you want to go. We'll handle the rest — guides, stays, routes, and the good memories.</p>
+        <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:11px; padding:17px 32px; border-radius:999px; background:#fff; color:#0A0A0A; font-size:17px; font-weight:600; box-shadow:0 18px 44px -12px rgba(0,0,0,0.5); transition:transform 200ms var(--ease-out-quint);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+          <span style="width:8px; height:8px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 10px var(--wk-spark-500);"></span>
+          Start your journey
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="border-top:1px solid var(--border); padding:64px 0 36px;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 32px;">
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:48px; margin-bottom:48px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;"><img src="images/brand/buddytrips-mark.png" alt="Buddy Trips logo" style="width:100%; height:100%; object-fit:contain; display:block;"></span>
+            <span style="font-size:20px; font-weight:700; letter-spacing:-0.03em; color:var(--fg);">buddytrips</span>
+          </div>
+          <p style="margin:0 0 20px; max-width:340px; font-size:15px; line-height:1.6; color:var(--fg-muted);">Your trusted travel companion for exploring Incredible India — genuine experiences across diverse destinations, from majestic mountains to pristine beaches.</p>
+          <div style="display:flex; gap:10px;">
+            <a href="https://www.instagram.com/buddytrips.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border-radius:50%; border:1px solid var(--border); color:var(--fg-muted); transition:background 200ms, color 200ms, transform 200ms;" onmouseover="this.style.background='var(--wk-gradient)'; this.style.color='#fff'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='transparent'; this.style.color='var(--fg-muted)'; this.style.transform='none';"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Facebook" style="display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border-radius:50%; border:1px solid var(--border); color:var(--fg-muted); transition:background 200ms, color 200ms, transform 200ms;" onmouseover="this.style.background='var(--wk-gradient)'; this.style.color='#fff'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='transparent'; this.style.color='var(--fg-muted)'; this.style.transform='none';"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9a1 1 0 0 1 1-1z"/></svg></a>
+            <a href="mailto:connect@buddytrips.in" aria-label="Email" style="display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border-radius:50%; border:1px solid var(--border); color:var(--fg-muted); transition:background 200ms, color 200ms, transform 200ms;" onmouseover="this.style.background='var(--wk-gradient)'; this.style.color='#fff'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='transparent'; this.style.color='var(--fg-muted)'; this.style.transform='none';"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:var(--fg); margin-bottom:16px;">Explore</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <a href="#destinations" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Destinations</a>
+            <a href="#tours" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Featured tours</a>
+            <a href="#why" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Why us</a>
+            <a href="#reviews" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Reviews</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:var(--fg); margin-bottom:16px;">Legal</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <a href="/terms-of-use" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Terms of use</a>
+            <a href="/terms-and-conditions" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Terms &amp; conditions</a>
+            <a href="/privacy-policy" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Privacy policy</a>
+            <a href="/cookie-policy" style="font-size:15px; color:var(--fg-muted); transition:color 200ms;" onmouseover="this.style.color='var(--wk-blue-500)'" onmouseout="this.style.color='var(--fg-muted)'">Cookie policy</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:24px; border-top:1px solid var(--border); flex-wrap:wrap;">
+        <div style="font-size:14px; color:var(--fg-subtle);">© 2026 Buddy Trips. All rights reserved.</div>
+        <div style="font-size:14px; color:var(--fg-subtle);">info@buddytrips.in · Support 9:00am – 9:00pm</div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;darkMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showOrbs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animateGradient&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this.tours = [
+      { ph: "images/tours/kashmir_paradise.png", offer: "30% off", price: "₹18,999", title: "Kashmir Paradise", rating: "5.0", count: 623, loc: "Jammu & Kashmir" },
+      { ph: "images/tours/manali_kasol.png", offer: "15% off", price: "₹12,999", title: "Manali & Kasol Adventure", rating: "4.8", count: 324, loc: "Himachal Pradesh" },
+      { ph: "images/tours/meghalaya.png", offer: "25% off", price: "₹19,999", title: "Meghalaya — Abode of Clouds", rating: "4.9", count: 567, loc: "Meghalaya" },
+      { ph: "images/tours/chopta_tungnath.png", offer: "20% off", price: "₹8,999", title: "Chopta & Tungnath Trek", rating: "4.9", count: 456, loc: "Uttarakhand" },
+      { ph: "images/tours/udaipur_city.png", offer: "18% off", price: "₹15,999", title: "Udaipur — City of Lakes", rating: "4.9", count: 445, loc: "Rajasthan" },
+      { ph: "images/tours/kedarkantha.png", offer: "25% off", price: "₹9,999", title: "Kedarkantha Winter Trek", rating: "4.7", count: 289, loc: "Uttarakhand" }
+    ];
+    this.reviews = [
+      { content: "Our Kashmir trip was absolutely magical! Perfect itinerary covering Gulmarg, Pahalgam, and Sonamarg. Knowledgeable guides, comfortable stays, and amazing food.", name: "Pooja Verma", role: "Software Engineer, Mumbai" },
+      { content: "Amazing Himachal experience! Well-organized Manali–Kasol trip. Solang Valley, Rohtang Pass, and serene Kasol. Buddy Trips delivers adventure, comfort, and genuine experiences.", name: "Rahul Kapoor", role: "Marketing Manager, Delhi" },
+      { content: "Rajasthan tour exceeded expectations! Udaipur and Jaisalmer were breathtaking. The desert safari and boat ride were highlights. Best travel experience!", name: "Anjali Patel", role: "Teacher, Ahmedabad" },
+      { content: "Kedarkantha winter trek was incredible! Excellent support, quality equipment, and experienced guides. Unforgettable snow-covered trails and mountain views.", name: "Vikram Reddy", role: "Business Analyst, Bangalore" },
+      { content: "Meghalaya was a dream come true! Living root bridges, crystal-clear waterfalls, and beautiful Shillong. Well-planned and completely stress-free.", name: "Sneha Joshi", role: "Graphic Designer, Pune" },
+      { content: "From the first call to the last day, everything was seamless. Honest pricing, no surprises, and a team that genuinely cares. Already planning my next trip!", name: "Dev Sharma", role: "Product Manager, Hyderabad" }
+    ];
+
+    this.regions = [
+      { key: "himachal", name: "Himachal Pradesh", ph: "images/placeholders/himachal.png",
+        tag: "Snow peaks & pine valleys", alt: "2,050 m", season: "Mar – Jun", days: "5–7 days",
+        blurb: "Alpine meadows, riverside cafés and high mountain passes — the classic Himalayan escape for first-timers and repeat trekkers alike.",
+        spots: ["Solang Valley", "Rohtang Pass", "Kasol", "Old Manali", "Jibhi"],
+        months: [35,40,62,80,88,70,45,42,58,75,66,48] },
+      { key: "uttarakhand", name: "Uttarakhand", ph: "images/placeholders/uttarakhand.png",
+        tag: "Trekker's paradise", alt: "3,810 m", season: "Apr – Jun · Dec – Feb", days: "6–8 days",
+        blurb: "From summer alpine treks to powder-snow winter trails, the Garhwal Himalayas pack the widest range of high-altitude adventure in India.",
+        spots: ["Chopta", "Tungnath", "Kedarkantha", "Kuari Pass", "Nainital"],
+        months: [70,72,60,78,84,66,40,38,55,72,68,82] },
+      { key: "kashmir", name: "Jammu & Kashmir", ph: "images/placeholders/kashmir.png",
+        tag: "Paradise on earth", alt: "2,730 m", season: "Mar – Oct", days: "6–8 days",
+        blurb: "Shikara rides on Dal Lake, meadows in Gulmarg and pine valleys in Pahalgam — the most photographed landscapes in the country.",
+        spots: ["Gulmarg", "Pahalgam", "Sonamarg", "Dal Lake", "Betaab Valley"],
+        months: [30,38,58,76,86,84,70,68,72,66,44,34] },
+      { key: "rajasthan", name: "Rajasthan", ph: "images/placeholders/rajasthan.png",
+        tag: "Royal desert heritage", alt: "Plains", season: "Oct – Mar", days: "5–7 days",
+        blurb: "Lake palaces, golden forts and camel safaris under desert stars — the warmth of India's most regal state, best savoured in winter.",
+        spots: ["Udaipur", "Jaisalmer", "City Palace", "Desert Safari", "Sam Dunes"],
+        months: [82,76,58,38,24,18,22,28,46,80,90,86] },
+      { key: "meghalaya", name: "Meghalaya", ph: "images/placeholders/meghalaya.png",
+        tag: "Abode of clouds", alt: "1,496 m", season: "Oct – Apr", days: "6–8 days",
+        blurb: "Living root bridges, turquoise rivers and Asia's cleanest village — the lush, misty northeast at its most magical after the monsoon.",
+        spots: ["Living Root Bridges", "Shillong", "Cherrapunji", "Dawki", "Mawlynnong"],
+        months: [66,70,72,68,44,28,24,30,52,84,82,74] },
+    ];
+    this.activeRegion = 0;
+
+    this.buildRegions();
+    this.buildTours();
+    this.buildReviews();
+    this.applyTweaks();
+    this.initNav();
+    requestAnimationFrame(() => this.initReveal());
+  }
+
+  componentDidUpdate() { this.applyTweaks(); }
+
+  applyTweaks() {
+    const root = document.getElementById("bt-root");
+    if (!root) return;
+    root.setAttribute("data-theme", this.props.darkMode ? "dark" : "light");
+    const orbs = document.getElementById("bt-orbs");
+    if (orbs) orbs.style.display = (this.props.showOrbs === false) ? "none" : "block";
+    document.querySelectorAll(".wk-text-gradient--animate").forEach(el => {
+      el.style.animationPlayState = (this.props.animateGradient === false) ? "paused" : "running";
+    });
+  }
+
+  esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+  buildRegions() {
+    const tabs = document.getElementById("bt-region-tabs");
+    if (!tabs) return;
+    tabs.innerHTML = this.regions.map((r, i) => `
+      <button data-region="${i}" class="bt-rtab" style="cursor:pointer; padding:10px 18px; border-radius:999px; font-size:14px; font-weight:600; font-family:var(--font-sans); border:1px solid var(--border-strong); background:transparent; color:var(--fg-muted); transition:all 220ms var(--ease-out-quint);">${this.esc(r.name)}</button>`).join("");
+    tabs.querySelectorAll(".bt-rtab").forEach(btn => {
+      btn.addEventListener("click", () => { this.activeRegion = parseInt(btn.getAttribute("data-region"), 10); this.renderRegion(true); });
+      btn.addEventListener("mouseenter", () => { if (parseInt(btn.getAttribute("data-region"),10) !== this.activeRegion) { btn.style.borderColor = "var(--wk-blue-300)"; btn.style.color = "var(--fg)"; } });
+      btn.addEventListener("mouseleave", () => { if (parseInt(btn.getAttribute("data-region"),10) !== this.activeRegion) { btn.style.borderColor = "var(--border-strong)"; btn.style.color = "var(--fg-muted)"; } });
+    });
+    this.renderRegion(false);
+  }
+
+  renderRegion(animate) {
+    const tabs = document.getElementById("bt-region-tabs");
+    const panel = document.getElementById("bt-region-panel");
+    if (!panel) return;
+    const r = this.regions[this.activeRegion];
+    if (tabs) tabs.querySelectorAll(".bt-rtab").forEach(btn => {
+      const on = parseInt(btn.getAttribute("data-region"),10) === this.activeRegion;
+      btn.style.background = on ? "var(--wk-gradient)" : "transparent";
+      btn.style.color = on ? "#fff" : "var(--fg-muted)";
+      btn.style.borderColor = on ? "transparent" : "var(--border-strong)";
+      btn.style.boxShadow = on ? "0 8px 20px -8px rgba(30,100,230,0.5)" : "none";
+    });
+    const mLabels = ["J","F","M","A","M","J","J","A","S","O","N","D"];
+    const peak = Math.max(...r.months);
+    const bars = r.months.map((v, i) => {
+      const isPeak = v >= peak - 4;
+      return `<div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px;">
+        <div style="position:relative; width:100%; height:120px; display:flex; align-items:flex-end;">
+          <div class="bt-bar" data-h="${v}" style="width:100%; height:0%; border-radius:6px 6px 3px 3px; background:${isPeak ? 'var(--wk-gradient)' : 'var(--wk-gradient-soft)'}; box-shadow:${isPeak ? '0 6px 16px -6px rgba(34,197,94,0.5)' : 'none'}; transition:height 700ms var(--ease-out-quint);"></div>
+          ${isPeak ? '<span style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); color:var(--wk-spark-500); font-size:11px;">✦</span>' : ''}
+        </div>
+        <span style="font-size:11px; font-weight:600; color:${isPeak ? 'var(--fg)' : 'var(--fg-subtle)'};">${mLabels[i]}</span>
+      </div>`;
+    }).join("");
+    const chips = r.spots.map(s => `<span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid var(--border-soft); font-size:13px; font-weight:600; color:var(--fg);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--wk-green-500)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11z"/><circle cx="12" cy="10" r="2.6"/></svg>${this.esc(s)}</span>`).join("");
+
+    panel.innerHTML = `
+      <div style="display:grid; grid-template-columns:1.05fr 1.2fr;">
+        <div style="position:relative; min-height:480px; overflow:hidden;">
+          ${this.sceneSVG(r)}
+          <div style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(to top, rgba(10,10,10,0.42) 0%, transparent 38%), linear-gradient(to right, transparent 74%, rgba(10,10,10,0.18));"></div>
+          <div style="position:absolute; left:22px; top:22px; display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.62); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7);">
+            <span style="width:7px; height:7px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 8px var(--wk-spark-500);"></span>
+            <span style="font-size:12px; font-weight:700; color:#0A0A0A;">${this.esc(r.tag)}</span>
+          </div>
+          <div style="position:absolute; left:22px; bottom:22px; right:22px;">
+            <div style="font-family:var(--font-display); font-size:30px; font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1.05;">${this.esc(r.name)}</div>
+          </div>
+          <div style="position:absolute; right:18px; top:18px; width:74px; height:74px; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+            <div style="position:absolute; inset:0; border:1.5px dashed rgba(255,255,255,0.7); border-radius:50%; animation:bt-spin 22s linear infinite;"></div>
+            <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.85); backdrop-filter:blur(8px); color:#0A0A0A;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.2 7.8 14 14 7.8 16.2 10 10"/></svg></span>
+          </div>
+        </div>
+        <div style="padding:34px 36px;">
+          <p style="margin:0 0 22px; font-size:16px; line-height:1.6; color:var(--fg-muted);">${this.esc(r.blurb)}</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:26px;">
+            <div style="padding:14px; border-radius:14px; background:rgba(255,255,255,0.5); border:1px solid var(--border-soft);"><div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:5px;">Best season</div><div style="font-size:15px; font-weight:700; color:var(--fg);">${this.esc(r.season)}</div></div>
+            <div style="padding:14px; border-radius:14px; background:rgba(255,255,255,0.5); border:1px solid var(--border-soft);"><div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:5px;">Max altitude</div><div style="font-size:15px; font-weight:700; color:var(--fg);">${this.esc(r.alt)}</div></div>
+            <div style="padding:14px; border-radius:14px; background:rgba(255,255,255,0.5); border:1px solid var(--border-soft);"><div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:5px;">Ideal trip</div><div style="font-size:15px; font-weight:700; color:var(--fg);">${this.esc(r.days)}</div></div>
+          </div>
+          <div style="font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:8px;">Signature spots</div>
+          <div style="display:flex; flex-wrap:wrap; gap:9px; margin-bottom:28px;">${chips}</div>
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px;">
+            <div style="font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle);">Best time to visit</div>
+            <div style="display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--fg-muted);"><span style="color:var(--wk-spark-500);">✦</span> peak months</div>
+          </div>
+          <div style="display:flex; align-items:flex-end; gap:6px;">${bars}</div>
+        </div>
+      </div>`;
+
+    const grow = () => panel.querySelectorAll(".bt-bar").forEach((b, i) => {
+      const h = b.getAttribute("data-h");
+      b.style.transitionDelay = (i * 35) + "ms";
+      b.style.height = h + "%";
+    });
+    if (animate) { requestAnimationFrame(() => requestAnimationFrame(grow)); }
+    else { this._regionGrow = grow; }
+  }
+
+  sceneSVG(r) {
+    const k = r.key;
+    const T = {
+      himachal:    { type:"snow",   sky:["#bfe3ff","#eef7ff"], sun:["#fff7da","#ffe9a8"], sx:498, sy:116, sr:44, back:"#7ba0cd", mid:"#4d77ab", front:"#2c4f7e", birds:true },
+      uttarakhand: { type:"snow",   sky:["#cfeaff","#edfbf1"], sun:["#fff3c0","#ffe6a0"], sx:148, sy:108, sr:42, back:"#86abd2", mid:"#4f8f88", front:"#2c6a55", birds:true },
+      kashmir:     { type:"lake",   sky:["#cfe6ff","#f5efde"], sun:["#fff1c2","#ffe2a6"], sx:472, sy:118, sr:46, back:"#94b4d8", mid:"#5c84b3", front:"#3a5d8d", lake:"#7aa4cc", birds:true },
+      rajasthan:   { type:"desert", sky:["#ffe7c2","#ffcf98"], sun:["#fff0bf","#ffd277"], sx:466, sy:142, sr:58, back:"#f0bd84", mid:"#e3a25e", front:"#c67e3a", birds:false },
+      meghalaya:   { type:"hills",  sky:["#d0eede","#eefaf0"], sun:["#f6ffea","#dcf0c4"], sx:150, sy:120, sr:40, back:"#8fc6a8", mid:"#5fa37f", front:"#387a57", birds:false, mist:true }
+    }[k];
+
+    const cloud = (cx, cy, s, op, dur, delay) =>
+      `<g style="animation:bt-cloudA ${dur}s linear ${delay}s infinite; opacity:${op};"><g transform="translate(${cx},${cy}) scale(${s})"><rect x="-46" y="-4" width="94" height="20" rx="10" fill="#fff"/><ellipse cx="-22" cy="-2" rx="24" ry="17" fill="#fff"/><ellipse cx="14" cy="-8" rx="28" ry="20" fill="#fff"/><ellipse cx="40" cy="0" rx="20" ry="14" fill="#fff"/></g></g>`;
+    const bird = (dur, delay, op) =>
+      `<g style="animation:bt-bird ${dur}s linear ${delay}s infinite; opacity:${op};"><path d="M0,0 q6,-6 12,0 q6,-6 12,0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></g>`;
+
+    const sun = `<g style="transform-origin:${T.sx}px ${T.sy}px; animation:bt-sun 7s ease-in-out infinite;"><circle cx="${T.sx}" cy="${T.sy}" r="${T.sr+30}" fill="url(#glow-${k})"/><circle cx="${T.sx}" cy="${T.sy}" r="${T.sr}" fill="url(#sun-${k})"/></g>`;
+
+    const plane = `
+      <path d="M-50,372 C150,210 330,330 520,150 L710,70" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-dasharray="2 11" stroke-linecap="round" opacity="0.9" style="animation:bt-trail 5s linear infinite;"/>
+      <g style="offset-path:path('M-50,372 C150,210 330,330 520,150 L710,70'); offset-rotate:auto; animation:bt-plane 9s ease-in-out infinite;">
+        <g transform="translate(-13,-13)" style="filter:drop-shadow(0 3px 4px rgba(0,0,0,0.25));"><path d="M2 13 L24 3 L15 24 L12 15 Z" fill="#ffffff"/><path d="M12 15 L24 3 L15 24 Z" fill="#dfe7ef"/></g>
+      </g>`;
+
+    let mid = "";
+    if (T.type === "snow") {
+      mid = `
+        <polygon points="0,300 80,238 150,288 226,196 300,262 382,176 462,250 540,196 612,256 640,228 640,520 0,520" fill="${T.back}" style="transform-origin:center; animation:bt-drift 17s ease-in-out infinite;"/>
+        <polygon points="226,196 256,236 196,236" fill="#f3f8ff"/><polygon points="382,176 416,224 348,224" fill="#f3f8ff"/><polygon points="540,196 568,238 512,238" fill="#eef5ff"/>
+        <polygon points="0,360 100,302 182,346 264,288 360,342 460,292 560,348 640,308 640,520 0,520" fill="${T.mid}" style="transform-origin:center; animation:bt-driftB 13s ease-in-out infinite;"/>
+        <polygon points="0,424 120,380 244,418 360,374 484,418 604,378 640,398 640,520 0,520" fill="${T.front}"/>`;
+    } else if (T.type === "lake") {
+      mid = `
+        <polygon points="0,286 84,224 156,278 232,190 306,250 386,168 470,242 548,190 618,248 640,222 640,372 0,372" fill="${T.back}" style="transform-origin:center; animation:bt-drift 17s ease-in-out infinite;"/>
+        <polygon points="232,190 262,232 202,232" fill="#f3f8ff"/><polygon points="386,168 420,220 352,220" fill="#eef5ff"/>
+        <polygon points="0,340 110,288 196,330 286,278 372,330 468,284 566,332 640,296 640,372 0,372" fill="${T.mid}"/>
+        <rect x="0" y="368" width="640" height="160" fill="${T.lake}"/>
+        <rect x="0" y="368" width="640" height="160" fill="url(#lake-${k})" opacity="0.5"/>
+        <g style="animation:bt-shimmer 5s ease-in-out infinite;"><line x1="60" y1="410" x2="180" y2="410" stroke="#fff" stroke-width="3" opacity="0.5" stroke-linecap="round"/><line x1="360" y1="438" x2="520" y2="438" stroke="#fff" stroke-width="3" opacity="0.45" stroke-linecap="round"/><line x1="220" y1="470" x2="330" y2="470" stroke="#fff" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/></g>`;
+    } else if (T.type === "desert") {
+      mid = `
+        <path d="M0,346 C120,306 230,360 350,332 C470,304 566,352 640,326 L640,520 0,520 Z" fill="${T.back}" style="transform-origin:center; animation:bt-drift 19s ease-in-out infinite;"/>
+        <path d="M0,398 C140,356 250,402 372,378 C494,354 580,398 640,378 L640,520 0,520 Z" fill="${T.mid}"/>
+        <g transform="translate(338,402) scale(1.05)" fill="#7a4a22" opacity="0.82"><ellipse cx="22" cy="8" rx="22" ry="9"/><path d="M4,4 q7,-13 13,-1"/><path d="M20,2 q8,-14 14,1"/><path d="M38,7 q9,-3 7,-14 l3,0 q3,14 -7,18 z"/><rect x="8" y="14" width="3" height="15"/><rect x="18" y="15" width="3" height="14"/><rect x="28" y="15" width="3" height="14"/><rect x="37" y="14" width="3" height="15"/></g>
+        <path d="M0,452 C150,420 260,456 400,436 C520,420 590,448 640,438 L640,520 0,520 Z" fill="${T.front}"/>`;
+    } else {
+      mid = `
+        <path d="M0,300 C110,256 210,312 330,286 C450,260 556,312 640,284 L640,520 0,520 Z" fill="${T.back}" style="transform-origin:center; animation:bt-drift 18s ease-in-out infinite;"/>
+        <path d="M0,358 C130,316 236,366 360,340 C484,314 574,360 640,340 L640,520 0,520 Z" fill="${T.mid}"/>
+        <g opacity="0.85"><line x1="452" y1="356" x2="452" y2="452" stroke="#fff" stroke-width="3.5" stroke-dasharray="10 8" stroke-linecap="round" style="animation:bt-fall 0.9s linear infinite;"/><line x1="462" y1="356" x2="462" y2="456" stroke="#eef" stroke-width="3" stroke-dasharray="10 9" stroke-linecap="round" style="animation:bt-fall 1.1s linear infinite;"/><line x1="472" y1="356" x2="472" y2="450" stroke="#fff" stroke-width="2.6" stroke-dasharray="9 9" stroke-linecap="round" style="animation:bt-fall 0.8s linear infinite;"/></g>
+        <path d="M0,430 C150,396 270,438 410,416 C520,398 592,430 640,420 L640,520 0,520 Z" fill="${T.front}"/>
+        <g style="animation:bt-cloudA 30s linear -6s infinite; opacity:0.55;"><ellipse cx="180" cy="430" rx="130" ry="20" fill="#fff"/></g>
+        <g style="animation:bt-cloudA 38s linear -20s infinite; opacity:0.4;"><ellipse cx="380" cy="468" rx="150" ry="22" fill="#fff"/></g>`;
+    }
+
+    const birds = T.birds ? `${bird(15,0,0.55)}${bird(19,-5,0.4)}${bird(17,-11,0.35)}` : "";
+
+    const photo = ({ himachal:"images/destinations/himachal_pradesh.png", uttarakhand:"images/destinations/uttarakhand.png", kashmir:"images/destinations/jammu_kashmir.png", rajasthan:"images/destinations/rajasthan.png", meghalaya:"images/destinations/meghalaya.png" })[k];
+    return `
+      <div data-screen-label="${this.esc(r.name)} animated scene" style="position:absolute; inset:0; overflow:hidden;">
+        <img src="${photo}" alt="${this.esc(r.name)}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; transform-origin:center; animation:bt-kenpan 28s ease-in-out infinite;">
+        <svg viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+          ${cloud(120,70,0.8,0.5,54,0)}${cloud(430,108,0.6,0.36,70,-26)}
+          ${birds}
+          ${plane}
+        </svg>
+      </div>`;
+  }
+
+  buildTours() {
+    const grid = document.getElementById("bt-tours-grid");
+    if (!grid) return;
+    grid.innerHTML = this.tours.map((t, i) => `
+      <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" data-reveal data-delay="${(i % 3) * 80}" class="bt-tour" style="display:block; border-radius:18px; overflow:hidden; background:var(--bg-elevated); border:1px solid var(--border); box-shadow:var(--shadow-sm); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
+        <div style="position:relative; height:230px; overflow:hidden;">
+          <img src="${t.ph}" alt="${this.esc(t.title)}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan${i % 2 ? 'B' : ''} ${24 + (i % 3) * 2}s ease-in-out ${-i * 3}s infinite;">
+          <span style="position:absolute; top:14px; left:14px; padding:6px 12px; border-radius:999px; background:var(--wk-spark-500); color:#fff; font-size:12px; font-weight:700; letter-spacing:0.01em; box-shadow:0 6px 16px -6px rgba(249,115,22,0.7);">${this.esc(t.offer)}</span>
+          <span style="position:absolute; top:12px; right:12px; display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.62); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.7); color:#E11D48;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+          <div style="position:absolute; left:14px; bottom:14px; padding:5px 11px; border-radius:999px; background:rgba(255,255,255,0.62); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.7); font-size:12px; font-weight:600; color:#0A0A0A;">From ${this.esc(t.price)}</div>
+        </div>
+        <div style="padding:18px 20px 20px;">
+          <h3 style="margin:0 0 12px; font-size:19px; font-weight:600; letter-spacing:-0.01em; color:var(--fg);">${this.esc(t.title)}</h3>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--fg-muted);">
+              <span style="display:inline-flex; align-items:center; gap:4px; padding:3px 9px; border-radius:999px; background:var(--wk-gradient-soft); color:var(--wk-green-700); font-weight:700;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg>${t.rating}</span>
+              <span>${t.count} ratings</span>
+            </div>
+            <div style="display:inline-flex; align-items:center; gap:5px; font-size:13px; color:var(--fg-muted);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11z"/><circle cx="12" cy="10" r="3"/></svg>${this.esc(t.loc)}</div>
+          </div>
+        </div>
+      </a>`).join("");
+
+    grid.querySelectorAll(".bt-tour").forEach(card => {
+      const img = card.querySelector("image-slot, img");
+      card.addEventListener("mouseenter", () => { card.style.transform = "translateY(-6px)"; card.style.boxShadow = "var(--shadow-lg)"; if (img) img.style.transform = "scale(1.07)"; });
+      card.addEventListener("mouseleave", () => { card.style.transform = "none"; card.style.boxShadow = "var(--shadow-sm)"; if (img) img.style.transform = "none"; });
+    });
+  }
+
+  buildReviews() {
+    const grid = document.getElementById("bt-reviews-grid");
+    if (!grid) return;
+    grid.innerHTML = this.reviews.map((r, i) => `
+      <div data-reveal data-delay="${(i % 3) * 80}" style="display:flex; flex-direction:column; gap:18px; padding:28px; border-radius:18px; background:rgba(255,255,255,0.5); backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%); border:1px solid var(--border-soft); box-shadow:var(--shadow-sm);">
+        <div style="display:flex; gap:3px; color:var(--wk-spark-500);">${'<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 6 20.4l1.4-6.8L2.3 9l6.9-.7z"/></svg>'.repeat(5)}</div>
+        <p class="wk-quote" style="margin:0; font-family:var(--font-serif); font-style:italic; font-size:21px; line-height:1.35; letter-spacing:-0.01em; color:var(--fg);">${this.esc(r.content)}</p>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:auto; padding-top:6px;">
+          <span style="display:inline-flex; width:42px; height:42px; align-items:center; justify-content:center; border-radius:50%; background:var(--wk-gradient); color:#fff; font-weight:700; font-size:16px;">${this.esc(r.name.charAt(0))}</span>
+          <div><div style="font-size:15px; font-weight:600; color:var(--fg);">${this.esc(r.name)}</div><div style="font-size:13px; color:var(--fg-muted);">${this.esc(r.role)}</div></div>
+        </div>
+      </div>`).join("");
+  }
+
+  initNav() {
+    const nav = document.getElementById("bt-nav");
+    if (!nav) return;
+    const onScroll = () => {
+      if (window.scrollY > 24) {
+        nav.style.background = "rgba(250,250,247,0.72)";
+        nav.style.backdropFilter = "blur(18px) saturate(150%)";
+        nav.style.webkitBackdropFilter = "blur(18px) saturate(150%)";
+        nav.style.borderBottomColor = "var(--border)";
+        nav.style.boxShadow = "var(--shadow-sm)";
+        nav.style.padding = "10px 0";
+      } else {
+        nav.style.background = "transparent";
+        nav.style.backdropFilter = "none";
+        nav.style.webkitBackdropFilter = "none";
+        nav.style.borderBottomColor = "transparent";
+        nav.style.boxShadow = "none";
+        nav.style.padding = "14px 0";
+      }
+    };
+    this._onScroll = onScroll;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    document.querySelectorAll("#bt-navlinks a").forEach(a => {
+      a.addEventListener("mouseenter", () => a.style.color = "var(--fg)");
+      a.addEventListener("mouseleave", () => a.style.color = "var(--fg-muted)");
+    });
+  }
+
+  componentWillUnmount() { if (this._onScroll) window.removeEventListener("scroll", this._onScroll); }
+
+  initReveal() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    const counters = Array.from(document.querySelectorAll(".bt-count"));
+    if (reduce) {
+      counters.forEach(el => {
+        el.textContent = (parseFloat(el.getAttribute("data-count")) || 0) + (el.getAttribute("data-suffix") || "");
+      });
+      if (this._regionGrow && !this._grew) { this._grew = true; this._regionGrow(); }
+      this.bindDestHover();
+      return;
+    }
+    els.forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "opacity 600ms cubic-bezier(0.22,1,0.36,1), transform 600ms cubic-bezier(0.22,1,0.36,1)";
+      const d = el.getAttribute("data-delay");
+      if (d) el.style.transitionDelay = d + "ms";
+    });
+    const shown = new Set();
+    const counted = new Set();
+    const check = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      els.forEach(el => {
+        if (shown.has(el)) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.9 && r.bottom > -40) { shown.add(el); el.style.opacity = "1"; el.style.transform = "none"; }
+      });
+      counters.forEach(el => {
+        if (counted.has(el)) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.88 && r.bottom > 0) { counted.add(el); this.animateCount(el); }
+      });
+      if (this._regionGrow && !this._grew) {
+        const p = document.getElementById("bt-region-panel");
+        if (p) { const pr = p.getBoundingClientRect(); if (pr.top < vh * 0.9 && pr.bottom > 0) { this._grew = true; this._regionGrow(); } }
+      }
+    };
+    this._check = check;
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check, { passive: true });
+    check();
+    // safety net: if scroll never fires (odd containers), reveal after a beat
+    setTimeout(check, 1200);
+    setTimeout(() => {
+      els.forEach(el => { el.style.opacity = "1"; el.style.transform = "none"; });
+      counters.forEach(el => { if (!counted.has(el)) { counted.add(el); this.animateCount(el); } });
+      if (this._regionGrow && !this._grew) { this._grew = true; this._regionGrow(); }
+    }, 5000);
+
+    this.bindDestHover();
+  }
+
+  bindDestHover() {
+    document.querySelectorAll(".bt-dest").forEach(card => {
+      const img = card.querySelector("image-slot, img");
+      const arrow = card.querySelector(".bt-arrow");
+      card.addEventListener("mouseenter", () => { card.style.transform = "translateY(-4px)"; card.style.boxShadow = "var(--shadow-lg)"; if (img) img.style.transform = "scale(1.06)"; if (arrow) { arrow.style.background = "var(--wk-gradient)"; arrow.style.color = "#fff"; arrow.style.transform = "rotate(45deg)"; } });
+      card.addEventListener("mouseleave", () => { card.style.transform = "none"; card.style.boxShadow = "var(--shadow-md)"; if (img) img.style.transform = "none"; if (arrow) { arrow.style.background = "rgba(255,255,255,0.85)"; arrow.style.color = "#0A0A0A"; arrow.style.transform = "none"; } });
+    });
+  }
+
+  animateCount(el) {
+    const target = parseFloat(el.getAttribute("data-count")) || 0;
+    const suffix = el.getAttribute("data-suffix") || "";
+    const dur = 1500, start = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 4);
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.round(target * ease(p)) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
