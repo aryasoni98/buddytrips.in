@@ -1,9 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+
+<!-- Primary SEO -->
+<title>Buddy Trips — Adventure Tours & Treks Across India</title>
+<meta name="description" content="Explore Incredible India with Buddy Trips. Curated adventure tours and treks across Himachal, Uttarakhand, Kashmir, Rajasthan & Meghalaya — expert guides, genuine experiences, 25k+ happy travelers.">
+<meta name="author" content="Buddy Trips">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#22c55e">
+<link rel="canonical" href="https://buddytrips.in/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Buddy Trips">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://buddytrips.in/">
+<meta property="og:title" content="Buddy Trips — Adventure Tours & Treks Across India">
+<meta property="og:description" content="Curated adventure tours and treks across Incredible India. Expert guides, genuine experiences, 25k+ happy travelers.">
+<meta property="og:image" content="https://buddytrips.in/images/hero/manali_kasol.jpg">
+<meta property="og:image:alt" content="Buddy Trips adventure travel across India">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Buddy Trips — Adventure Tours & Treks Across India">
+<meta name="twitter:description" content="Curated adventure tours and treks across Incredible India. Expert guides, genuine experiences, 25k+ happy travelers.">
+<meta name="twitter:image" content="https://buddytrips.in/images/hero/manali_kasol.jpg">
+
+<!-- Icons & manifest -->
+<link rel="icon" type="image/png" href="/images/brand/buddytrips-mark.png">
+<link rel="apple-touch-icon" href="/images/brand/buddytrips-mark.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Performance hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://wa.me">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Buddy Trips",
+  "url": "https://buddytrips.in/",
+  "logo": "https://buddytrips.in/images/brand/buddytrips-mark.png",
+  "image": "https://buddytrips.in/images/hero/manali_kasol.jpg",
+  "description": "Adventure travel agency offering curated tours and treks across Incredible India.",
+  "telephone": "+91-9811295429",
+  "email": "info@buddytrips.in",
+  "areaServed": "IN",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "25000",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Ananya Sharma" },
+      "datePublished": "2025-10-12",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Our Manali & Kasol trek with Buddy Trips was flawless — expert guides, great stays and genuinely memorable experiences."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Rohan Mehta" },
+      "datePublished": "2025-09-03",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Seamless planning for our Kashmir trip. Everything was well organised and the team was responsive throughout."
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/buddytrips.in/"
+  ]
+}
+</script>
+
+<script src="./support.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -37,6 +114,44 @@
   @media (prefers-reduced-motion: reduce) {
     [style*="animation"] { animation: none !important; }
   }
+
+  /* ============ MOBILE NAV ============ */
+  #bt-burger { display: none; cursor: pointer; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border-strong); background: rgba(255,255,255,0.6); -webkit-backdrop-filter: blur(14px) saturate(150%); backdrop-filter: blur(14px) saturate(150%); color: var(--fg); padding: 0; }
+  #bt-mobile-menu { display: none; }
+  #bt-mobile-menu.open { display: block; }
+
+  /* ============ RESPONSIVE BREAKPOINTS ============ */
+  @media (max-width: 1024px) {
+    #bt-tours-grid, #bt-reviews-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 880px) {
+    #bt-navlinks, #bt-nav-cta { display: none !important; }
+    #bt-burger { display: inline-flex; }
+    #bt-hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    #bt-hero-media { height: 360px !important; }
+    #top { padding: 112px 0 56px !important; }
+    #bt-why-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    #bt-why-media { height: 360px !important; }
+    .bt-region-grid { grid-template-columns: 1fr !important; }
+    .bt-region-scene { min-height: 280px !important; }
+    .bt-region-info { padding: 28px 24px !important; }
+  }
+  @media (max-width: 720px) {
+    #bt-dest-grid { grid-template-columns: 1fr 1fr !important; grid-template-rows: auto !important; }
+    #bt-dest-grid > a { grid-row: auto !important; min-height: 220px; }
+    #bt-metrics-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 32px 20px !important; padding: 48px 28px !important; }
+    #bt-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+    #bt-tours-grid, #bt-reviews-grid { grid-template-columns: 1fr !important; }
+    section { padding-top: 60px !important; padding-bottom: 60px !important; }
+    .wk-quote { font-size: 18px !important; }
+  }
+  @media (max-width: 480px) {
+    #bt-hero-media { display: none !important; }
+    #bt-dest-grid { grid-template-columns: 1fr !important; }
+    #bt-footer-grid { grid-template-columns: 1fr !important; }
+    .bt-region-stats { grid-template-columns: 1fr !important; }
+    h1 { font-size: clamp(38px, 11vw, 52px) !important; }
+  }
 </style>
 </helmet>
 
@@ -58,7 +173,24 @@
         <a href="#why" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Why us</a>
         <a href="#reviews" style="font-size:15px; font-weight:500; color:var(--fg-muted); transition:color 200ms;">Reviews</a>
       </div>
-      <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:9px; padding:11px 20px; border-radius:999px; background:var(--wk-gradient); color:#fff; font-size:15px; font-weight:600; box-shadow:0 8px 22px -8px rgba(30,100,230,0.55); transition:transform 200ms var(--ease-out-quint), box-shadow 200ms;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 12px 28px -8px rgba(34,197,94,0.6)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 8px 22px -8px rgba(30,100,230,0.55)';">
+      <a id="bt-nav-cta" href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:9px; padding:13px 20px; border-radius:999px; background:var(--wk-gradient); color:#fff; font-size:15px; font-weight:600; box-shadow:0 8px 22px -8px rgba(30,100,230,0.55); transition:transform 200ms var(--ease-out-quint), box-shadow 200ms;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 12px 28px -8px rgba(34,197,94,0.6)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 8px 22px -8px rgba(30,100,230,0.55)';">
+        <span style="width:7px; height:7px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 8px var(--wk-spark-500);"></span>
+        Start your journey
+      </a>
+      <button id="bt-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="bt-mobile-menu">
+        <svg id="bt-burger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+    <!-- mobile drawer -->
+    <div id="bt-mobile-menu" style="margin:10px 16px 0; padding:16px; border-radius:18px; background:rgba(250,250,247,0.92); -webkit-backdrop-filter:blur(18px) saturate(150%); backdrop-filter:blur(18px) saturate(150%); border:1px solid var(--border); box-shadow:var(--shadow-lg);">
+      <nav style="display:flex; flex-direction:column;">
+        <a href="#destinations" class="bt-mlink" style="padding:13px 12px; border-radius:12px; font-size:16px; font-weight:600; color:var(--fg);">Destinations</a>
+        <a href="#explore" class="bt-mlink" style="padding:13px 12px; border-radius:12px; font-size:16px; font-weight:600; color:var(--fg);">Regions</a>
+        <a href="#tours" class="bt-mlink" style="padding:13px 12px; border-radius:12px; font-size:16px; font-weight:600; color:var(--fg);">Tours</a>
+        <a href="#why" class="bt-mlink" style="padding:13px 12px; border-radius:12px; font-size:16px; font-weight:600; color:var(--fg);">Why us</a>
+        <a href="#reviews" class="bt-mlink" style="padding:13px 12px; border-radius:12px; font-size:16px; font-weight:600; color:var(--fg);">Reviews</a>
+      </nav>
+      <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" class="bt-mlink" style="display:flex; align-items:center; justify-content:center; gap:9px; margin-top:8px; padding:15px 20px; border-radius:999px; background:var(--wk-gradient); color:#fff; font-size:16px; font-weight:600; box-shadow:0 8px 22px -8px rgba(30,100,230,0.55);">
         <span style="width:7px; height:7px; border-radius:50%; background:var(--wk-spark-500); box-shadow:0 0 8px var(--wk-spark-500);"></span>
         Start your journey
       </a>
@@ -74,7 +206,7 @@
       <div style="position:absolute; bottom:-40px; left:42%; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(249,115,22,0.30), transparent 70%); filter:blur(50px); animation:bt-orb 18s var(--ease-in-out) infinite;"></div>
     </div>
 
-    <div style="position:relative; z-index:2; max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;">
+    <div id="bt-hero-grid" style="position:relative; z-index:2; max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;">
       <!-- copy -->
       <div>
         <div data-reveal style="display:inline-flex; align-items:center; gap:9px; padding:8px 15px; border-radius:999px; background:rgba(255,255,255,0.6); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7); box-shadow:var(--shadow-sm); margin-bottom:26px;">
@@ -104,7 +236,7 @@
       </div>
 
       <!-- glass image collage -->
-      <div data-reveal data-delay="120" style="position:relative; height:540px;">
+      <div id="bt-hero-media" data-reveal data-delay="120" style="position:relative; height:540px;">
         <div style="position:absolute; top:0; left:8%; width:62%; height:330px; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid rgba(255,255,255,0.6); animation:bt-float 7s var(--ease-in-out) infinite;">
           <img src="images/hero/manali_kasol.jpg" alt="Manali &amp; Kasol" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
           <div style="position:absolute; left:14px; bottom:14px; padding:8px 14px; border-radius:12px; background:rgba(255,255,255,0.6); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7);"><div style="font-size:14px; font-weight:700; color:#0A0A0A;">Manali &amp; Kasol</div><div style="font-size:11px; color:rgba(10,10,10,0.6);">Himachal Pradesh</div></div>
@@ -149,9 +281,9 @@
         <h2 style="margin:0 0 16px; font-family:var(--font-display); font-weight:700; font-size:clamp(32px,3.6vw,46px); line-height:1.05; letter-spacing:-0.02em; color:var(--fg);">Discover India's top destinations</h2>
         <p style="margin:0; font-size:18px; line-height:1.55; color:var(--fg-muted);">From majestic mountains to golden deserts - India's incredible diversity, one trip at a time.</p>
       </div>
-      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:230px 230px; gap:20px;">
+      <div id="bt-dest-grid" style="display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:230px 230px; gap:20px;">
         <a href="#" data-reveal class="bt-dest" style="grid-row:span 2; position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
-          <img src="images/destinations/himachal_pradesh.png" alt="Himachal Pradesh" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
+          <img src="images/destinations/himachal_pradesh.png" alt="Himachal Pradesh" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
           <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 55%);"></div>
           <div style="position:absolute; left:20px; right:20px; bottom:20px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px;">
             <div><div style="font-size:24px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Himachal Pradesh</div><div style="font-size:13px; color:rgba(255,255,255,0.78);">8 listings</div></div>
@@ -159,22 +291,22 @@
           </div>
         </a>
         <a href="#" data-reveal data-delay="80" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
-          <img src="images/destinations/uttarakhand.png" alt="Uttarakhand" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 22s ease-in-out infinite;">
+          <img src="images/destinations/uttarakhand.png" alt="Uttarakhand" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 22s ease-in-out infinite;">
           <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
           <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Uttarakhand</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">12 listings</div></div>
         </a>
         <a href="#" data-reveal data-delay="160" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
-          <img src="images/destinations/jammu_kashmir.png" alt="Jammu & Kashmir" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 24s ease-in-out -6s infinite;">
+          <img src="images/destinations/jammu_kashmir.png" alt="Jammu & Kashmir" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 24s ease-in-out -6s infinite;">
           <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
           <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Jammu &amp; Kashmir</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">5 listings</div></div>
         </a>
         <a href="#" data-reveal data-delay="80" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
-          <img src="images/destinations/rajasthan.png" alt="Rajasthan" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 28s ease-in-out -10s infinite;">
+          <img src="images/destinations/rajasthan.png" alt="Rajasthan" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 28s ease-in-out -10s infinite;">
           <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
           <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Rajasthan</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">6 listings</div></div>
         </a>
         <a href="#" data-reveal data-delay="160" class="bt-dest" style="position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow-md); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
-          <img src="images/destinations/meghalaya.png" alt="Meghalaya" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 23s ease-in-out -4s infinite;">
+          <img src="images/destinations/meghalaya.png" alt="Meghalaya" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 23s ease-in-out -4s infinite;">
           <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);"></div>
           <div style="position:absolute; left:18px; bottom:16px;"><div style="font-size:19px; font-weight:700; color:#fff; letter-spacing:-0.02em;">Meghalaya</div><div style="font-size:12px; color:rgba(255,255,255,0.78);">4 listings</div></div>
         </a>
@@ -215,14 +347,14 @@
   <!-- ============ WHY CHOOSE US ============ -->
   <section id="why" style="position:relative; padding:96px 0; overflow:hidden;">
     <div style="position:absolute; top:10%; right:-80px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle,rgba(34,197,94,0.18),transparent 70%); filter:blur(50px); z-index:0;"></div>
-    <div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;">
+    <div id="bt-why-grid" style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;">
       <!-- floating images -->
-      <div data-reveal style="position:relative; height:480px;">
+      <div id="bt-why-media" data-reveal style="position:relative; height:480px;">
         <div style="position:absolute; top:0; left:0; width:74%; height:360px; border-radius:28px; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid rgba(255,255,255,0.6); animation:bt-float 7s var(--ease-in-out) infinite;">
-          <img src="images/why/valley.jpg" alt="Himalayan river valley" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
+          <img src="images/why/valley.jpg" alt="Himalayan river valley" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan 26s ease-in-out infinite;">
         </div>
         <div style="position:absolute; bottom:10px; right:0; width:50%; height:240px; border-radius:140px; overflow:hidden; box-shadow:var(--shadow-lg); border:4px solid var(--bg); animation:bt-floatB 8s var(--ease-in-out) infinite; animation-delay:-2s;">
-          <img src="images/why/temple.jpg" alt="Himalayan ridge temple" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 24s ease-in-out -4s infinite;">
+          <img src="images/why/temple.jpg" alt="Himalayan ridge temple" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpanB 24s ease-in-out -4s infinite;">
         </div>
         <!-- glass trust badge -->
         <div style="position:absolute; left:8px; bottom:36px; z-index:4; display:flex; align-items:center; gap:13px; padding:14px 18px; border-radius:16px; background:rgba(255,255,255,0.62); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); border:1px solid rgba(255,255,255,0.75); box-shadow:var(--shadow-lg); animation:bt-float 6s var(--ease-in-out) infinite; animation-delay:-3s;">
@@ -262,7 +394,7 @@
   <section style="padding:0 32px;">
     <div data-reveal style="position:relative; max-width:1280px; margin:0 auto; border-radius:28px; overflow:hidden; background:var(--wk-gradient); box-shadow:var(--shadow-xl);">
       <svg style="position:absolute; inset:0; width:100%; height:100%; opacity:0.4; mix-blend-mode:overlay;"><filter id="bt-noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#bt-noise)"/></svg>
-      <div style="position:relative; z-index:1; padding:64px 48px; display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
+      <div id="bt-metrics-grid" style="position:relative; z-index:1; padding:64px 48px; display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
         <div style="text-align:center;"><div class="bt-count" data-count="25" data-suffix="k+" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Happy travelers</div></div>
         <div style="text-align:center;"><div class="bt-count" data-count="150" data-suffix="+" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Destinations covered</div></div>
         <div style="text-align:center;"><div class="bt-count" data-count="500" data-suffix="+" style="font-family:var(--font-display); font-size:clamp(40px,4vw,56px); font-weight:700; letter-spacing:-0.02em; color:#fff; line-height:1;">0</div><div style="margin-top:8px; font-size:15px; color:rgba(255,255,255,0.85);">Successful trips</div></div>
@@ -300,7 +432,7 @@
   <!-- ============ FOOTER ============ -->
   <footer style="border-top:1px solid var(--border); padding:64px 0 36px;">
     <div style="max-width:1280px; margin:0 auto; padding:0 32px;">
-      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:48px; margin-bottom:48px;">
+      <div id="bt-footer-grid" style="display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:48px; margin-bottom:48px;">
         <div>
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
             <span style="display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;"><img src="images/brand/buddytrips-mark.png" alt="Buddy Trips logo" style="width:100%; height:100%; object-fit:contain; display:block;"></span>
@@ -452,8 +584,8 @@ class Component extends DCLogic {
     const chips = r.spots.map(s => `<span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid var(--border-soft); font-size:13px; font-weight:600; color:var(--fg);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--wk-green-500)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11z"/><circle cx="12" cy="10" r="2.6"/></svg>${this.esc(s)}</span>`).join("");
 
     panel.innerHTML = `
-      <div style="display:grid; grid-template-columns:1.05fr 1.2fr;">
-        <div style="position:relative; min-height:480px; overflow:hidden;">
+      <div class="bt-region-grid" style="display:grid; grid-template-columns:1.05fr 1.2fr;">
+        <div class="bt-region-scene" style="position:relative; min-height:480px; overflow:hidden;">
           ${this.sceneSVG(r)}
           <div style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(to top, rgba(10,10,10,0.42) 0%, transparent 38%), linear-gradient(to right, transparent 74%, rgba(10,10,10,0.18));"></div>
           <div style="position:absolute; left:22px; top:22px; display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.62); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%); border:1px solid rgba(255,255,255,0.7);">
@@ -468,9 +600,9 @@ class Component extends DCLogic {
             <span style="display:inline-flex; width:46px; height:46px; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.85); backdrop-filter:blur(8px); color:#0A0A0A;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.2 7.8 14 14 7.8 16.2 10 10"/></svg></span>
           </div>
         </div>
-        <div style="padding:34px 36px;">
+        <div class="bt-region-info" style="padding:34px 36px;">
           <p style="margin:0 0 22px; font-size:16px; line-height:1.6; color:var(--fg-muted);">${this.esc(r.blurb)}</p>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:26px;">
+          <div class="bt-region-stats" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:26px;">
             <div style="padding:14px; border-radius:14px; background:rgba(255,255,255,0.5); border:1px solid var(--border-soft);"><div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:5px;">Best season</div><div style="font-size:15px; font-weight:700; color:var(--fg);">${this.esc(r.season)}</div></div>
             <div style="padding:14px; border-radius:14px; background:rgba(255,255,255,0.5); border:1px solid var(--border-soft);"><div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:5px;">Max altitude</div><div style="font-size:15px; font-weight:700; color:var(--fg);">${this.esc(r.alt)}</div></div>
             <div style="padding:14px; border-radius:14px; background:rgba(255,255,255,0.5); border:1px solid var(--border-soft);"><div style="font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-subtle); margin-bottom:5px;">Ideal trip</div><div style="font-size:15px; font-weight:700; color:var(--fg);">${this.esc(r.days)}</div></div>
@@ -553,7 +685,7 @@ class Component extends DCLogic {
     const photo = ({ himachal:"images/destinations/himachal_pradesh.png", uttarakhand:"images/destinations/uttarakhand.png", kashmir:"images/destinations/jammu_kashmir.png", rajasthan:"images/destinations/rajasthan.png", meghalaya:"images/destinations/meghalaya.png" })[k];
     return `
       <div data-screen-label="${this.esc(r.name)} animated scene" style="position:absolute; inset:0; overflow:hidden;">
-        <img src="${photo}" alt="${this.esc(r.name)}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; transform-origin:center; animation:bt-kenpan 28s ease-in-out infinite;">
+        <img src="${photo}" alt="${this.esc(r.name)}" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; transform-origin:center; animation:bt-kenpan 28s ease-in-out infinite;">
         <svg viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
           ${cloud(120,70,0.8,0.5,54,0)}${cloud(430,108,0.6,0.36,70,-26)}
           ${birds}
@@ -568,7 +700,7 @@ class Component extends DCLogic {
     grid.innerHTML = this.tours.map((t, i) => `
       <a href="https://wa.me/919811295429" target="_blank" rel="noopener noreferrer" data-reveal data-delay="${(i % 3) * 80}" class="bt-tour" style="display:block; border-radius:18px; overflow:hidden; background:var(--bg-elevated); border:1px solid var(--border); box-shadow:var(--shadow-sm); transition:transform 300ms var(--ease-out-quint), box-shadow 300ms;">
         <div style="position:relative; height:230px; overflow:hidden;">
-          <img src="${t.ph}" alt="${this.esc(t.title)}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan${i % 2 ? 'B' : ''} ${24 + (i % 3) * 2}s ease-in-out ${-i * 3}s infinite;">
+          <img src="${t.ph}" alt="${this.esc(t.title)}" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform-origin:center; animation:bt-kenpan${i % 2 ? 'B' : ''} ${24 + (i % 3) * 2}s ease-in-out ${-i * 3}s infinite;">
           <span style="position:absolute; top:14px; left:14px; padding:6px 12px; border-radius:999px; background:var(--wk-spark-500); color:#fff; font-size:12px; font-weight:700; letter-spacing:0.01em; box-shadow:0 6px 16px -6px rgba(249,115,22,0.7);">${this.esc(t.offer)}</span>
           <span style="position:absolute; top:12px; right:12px; display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.62); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.7); color:#E11D48;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
           <div style="position:absolute; left:14px; bottom:14px; padding:5px 11px; border-radius:999px; background:rgba(255,255,255,0.62); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.7); font-size:12px; font-weight:600; color:#0A0A0A;">From ${this.esc(t.price)}</div>
@@ -633,9 +765,28 @@ class Component extends DCLogic {
       a.addEventListener("mouseenter", () => a.style.color = "var(--fg)");
       a.addEventListener("mouseleave", () => a.style.color = "var(--fg-muted)");
     });
+
+    // mobile drawer
+    const burger = document.getElementById("bt-burger");
+    const menu = document.getElementById("bt-mobile-menu");
+    const icon = document.getElementById("bt-burger-icon");
+    if (burger && menu) {
+      const setOpen = (open) => {
+        menu.classList.toggle("open", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        if (icon) icon.innerHTML = open
+          ? '<path d="M6 6l12 12M18 6 6 18"/>'
+          : '<path d="M3 6h18M3 12h18M3 18h18"/>';
+      };
+      burger.addEventListener("click", () => setOpen(!menu.classList.contains("open")));
+      menu.querySelectorAll(".bt-mlink").forEach(a => a.addEventListener("click", () => setOpen(false)));
+      this._onResize = () => { if (window.innerWidth > 880) setOpen(false); };
+      window.addEventListener("resize", this._onResize, { passive: true });
+    }
   }
 
-  componentWillUnmount() { if (this._onScroll) window.removeEventListener("scroll", this._onScroll); }
+  componentWillUnmount() { if (this._onScroll) window.removeEventListener("scroll", this._onScroll); if (this._onResize) window.removeEventListener("resize", this._onResize); }
 
   initReveal() {
     const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
