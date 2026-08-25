@@ -15,6 +15,11 @@
 .npm/
 *.tgz
 
+# generated AEO text (npm prebuild)
+/public/llms.txt
+/public/llms-full.txt
+/public/api/md/
+
 # next.js
 /.next/
 /out/

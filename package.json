@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npx --yes tsx scripts/generate-aeo-files.ts",
     "dev": "next dev",
+    "prebuild": "npx --yes tsx scripts/generate-aeo-files.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
