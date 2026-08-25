@@ -1,0 +1,353 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@plugin "@tailwindcss/typography";
+
+/* =========================================================
+   TAILWIND THEME - registers DESIGN.md scales as utilities.
+   Semantic color tokens stay named exactly as tokens.css
+   defines them (non-negotiable); @theme inline aliases them
+   into Tailwind's --color-* namespace without renaming the
+   source variables.
+   ========================================================= */
+@theme {
+  --font-display: "Sora", "SF Pro Display", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Inter", "SF Pro Text", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-serif: "New York", "Iowan Old Style", "Apple Garamond", Georgia, serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", monospace;
+
+  --text-display-xl: clamp(2.75rem, 5.4vw, 4.75rem);
+  --text-display-xl--line-height: 0.98;
+  --text-display-xl--letter-spacing: -0.028em;
+  --text-display-xl--font-weight: 700;
+
+  --text-display-lg: clamp(2rem, 3.6vw, 2.875rem);
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-display-md: clamp(1.625rem, 3.2vw, 2.625rem);
+  --text-display-md--line-height: 1.06;
+  --text-display-md--letter-spacing: -0.02em;
+  --text-display-md--font-weight: 700;
+
+  --text-heading-lg: 1.3125rem;
+  --text-heading-lg--line-height: 1.3;
+  --text-heading-lg--letter-spacing: -0.01em;
+  --text-heading-lg--font-weight: 600;
+
+  --text-heading-md: 1.1875rem;
+  --text-heading-md--line-height: 1.35;
+  --text-heading-md--letter-spacing: -0.01em;
+  --text-heading-md--font-weight: 600;
+
+  --text-body-lg: 1.1875rem;
+  --text-body-lg--line-height: 1.55;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.55;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+  --text-body-sm--font-weight: 500;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0.06em;
+  --text-caption--font-weight: 600;
+
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1.3;
+  --text-micro--letter-spacing: 0.01em;
+  --text-micro--font-weight: 700;
+
+  /* Overrides Tailwind's default radius scale with DESIGN.md values */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+
+  /* Overrides ease-in-out; adds the rest as new utilities */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Editorial max-width - tighter than the 1280px default */
+  --container-page: 75rem;
+
+  /* DESIGN.md §9 breakpoints - used as max-{name}: variants (desktop-first
+     cascade, matching the charter's own <= phrasing) alongside Tailwind's
+     default min-width scale. */
+  --breakpoint-mobile-s: 480px;
+  --breakpoint-mobile: 720px;
+  --breakpoint-mobile-l: 880px;
+  --breakpoint-tablet: 1024px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-muted: var(--bg-muted);
+  --color-bg-inverse: var(--bg-inverse);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-on-dark: var(--fg-on-dark);
+  --color-fg-on-dark-muted: var(--fg-on-dark-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-soft: var(--border-soft);
+  --color-blue-500: var(--wk-blue-500);
+  --color-blue-300: var(--wk-blue-300);
+  --color-green-500: var(--wk-green-500);
+  --color-green-700: var(--wk-green-700);
+  --color-green-300: var(--wk-green-300);
+  --color-spark-500: var(--wk-spark-500);
+}
+
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-md);
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.22);
+}
+
+:focus-visible {
+  outline: 2px solid var(--wk-blue-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@utility tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Typography plugin - retuned to the site's own tokens instead of grays */
+.prose {
+  --tw-prose-body: var(--fg-muted);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--wk-blue-500);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--fg-muted);
+  --tw-prose-bullets: var(--border-strong);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--border-strong);
+  --tw-prose-captions: var(--fg-subtle);
+}
+
+/* =========================================================
+   GLASS / MATERIAL SYSTEM
+   ========================================================= */
+/* backdrop-filter is a single var() reference per utility (the value
+   itself, not a function argument) - see tokens.css for why: this build's
+   CSS minifier silently drops backdrop-filter when a selector has it
+   declared more than once, or when a var() is used as a function argument
+   (e.g. blur(var(--x))). Routing the whole value through one variable is
+   what survives, and lets prefers-reduced-transparency swap it to `none`
+   by overriding the variable instead of re-declaring the property. */
+@utility glass {
+  background: var(--glass-default-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+@utility glass-light {
+  background: var(--glass-light-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+@utility glass-strong {
+  background: var(--glass-strong-bg);
+  backdrop-filter: var(--glass-backdrop-strong);
+  border: 1px solid var(--glass-strong-border);
+  box-shadow: var(--shadow-lg);
+}
+
+@utility glass-dark {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-backdrop-dark);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Fixed light glass for labels that float over a photograph (hero image
+   captions, region scene tag chips, tour price chips). These never flip
+   with the site theme - the photo underneath doesn't change with it, so
+   the label reads with fixed dark text regardless of light/dark mode. */
+@utility glass-photo {
+  background: var(--glass-photo-bg);
+  backdrop-filter: var(--glass-backdrop-strong);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient text - never on body copy */
+@utility text-gradient {
+  background: var(--wk-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-animate {
+  background: var(--wk-gradient);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: bt-grad 8s var(--ease-in-out) infinite;
+}
+
+/* =========================================================
+   KEYFRAMES - ambient motion (ported 1:1 from the original
+   implementation; durations are bespoke per element, not
+   tokenized)
+   ========================================================= */
+@keyframes bt-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+@keyframes bt-float-b {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-26px); }
+}
+@keyframes bt-float-c {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-14px) rotate(-3deg); }
+}
+@keyframes bt-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.08); }
+  66% { transform: translate(-30px, 24px) scale(0.96); }
+}
+@keyframes bt-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes bt-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.35; }
+}
+@keyframes bt-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes bt-grad {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes bt-kenpan {
+  0% { transform: scale(1.06) translate(0, 0); }
+  50% { transform: scale(1.13) translate(-2%, -1.4%); }
+  100% { transform: scale(1.06) translate(0, 0); }
+}
+@keyframes bt-kenpan-b {
+  0% { transform: scale(1.06) translate(0, 0); }
+  50% { transform: scale(1.12) translate(2%, -1%); }
+  100% { transform: scale(1.06) translate(0, 0); }
+}
+@keyframes bt-hero-zoom {
+  0%, 100% { transform: scale(1.03); }
+  50% { transform: scale(1.12); }
+}
+@keyframes bt-bounce-sm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes bt-sun {
+  0%, 100% { transform: translateY(0); opacity: 0.96; }
+  50% { transform: translateY(-7px); opacity: 1; }
+}
+@keyframes bt-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-13px); }
+}
+@keyframes bt-drift-b {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(11px); }
+}
+@keyframes bt-cloud {
+  from { transform: translateX(-180px); }
+  to { transform: translateX(800px); }
+}
+@keyframes bt-bird {
+  from { transform: translate(-60px, 10px); }
+  to { transform: translate(740px, -30px); }
+}
+@keyframes bt-plane {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+@keyframes bt-trail {
+  to { stroke-dashoffset: -160; }
+}
+@keyframes bt-fall {
+  to { stroke-dashoffset: -28; }
+}
+@keyframes bt-shimmer {
+  0%, 100% { opacity: 0.35; transform: translateX(0); }
+  50% { opacity: 0.6; transform: translateX(8px); }
+}
+
+/* =========================================================
+   ACCESSIBILITY FALLBACKS (non-negotiable, DESIGN.md §6, §7)
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

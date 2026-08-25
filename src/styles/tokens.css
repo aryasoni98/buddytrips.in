@@ -1,0 +1,160 @@
+/* =========================================================
+   BuddyTrips Design Tokens - from DESIGN.md. Non-negotiable.
+   ========================================================= */
+
+:root {
+  /* === SURFACES === */
+  --bg: #fafaf7;
+  --bg-elevated: #ffffff;
+  --bg-muted: #f5f5f0;
+  --bg-inverse: #0a0a0a;
+
+  /* === TEXT === */
+  --fg: #0a0a0a;
+  --fg-muted: #5c5c5c;
+  --fg-subtle: #8e8e8e;
+  --fg-on-dark: #ffffff;
+  --fg-on-dark-muted: rgba(255, 255, 255, 0.72);
+
+  /* === BORDERS === */
+  --border: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --border-soft: rgba(0, 0, 0, 0.06);
+
+  /* === BRAND GRADIENTS === */
+  --wk-gradient: linear-gradient(135deg, #1e64e6 0%, #22c55e 100%);
+  --wk-gradient-soft: linear-gradient(
+    135deg,
+    rgba(30, 100, 230, 0.1) 0%,
+    rgba(34, 197, 94, 0.1) 100%
+  );
+  --wk-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    #1e64e6,
+    #22c55e,
+    #f97316,
+    #1e64e6
+  );
+
+  /* === ACCENT COLORS === */
+  --wk-blue-500: #1e64e6;
+  --wk-blue-300: #7ba6ff;
+  --wk-green-500: #22c55e;
+  --wk-green-700: #15803d;
+  --wk-green-300: #86efac;
+  --wk-spark-500: #f97316;
+
+  /* === SHADOWS (layered, soft, Apple-style) === */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04), 0 10px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.06), 0 20px 40px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.08), 0 32px 64px rgba(0, 0, 0, 0.12);
+
+  /* Font stacks, type scale, spacing, radius, and easing are registered as
+     Tailwind theme variables in globals.css (@theme) so they double as
+     utility classes - see globals.css for --font-*, --text-*, --radius-*,
+     --ease-*, --container-*. Kept here: tokens with no Tailwind utility
+     namespace, or whose exact non-negotiable value shouldn't be aliased. */
+
+  /* === MOTION: duration === */
+  --duration-fast: 150ms;
+  --duration-norm: 220ms;
+  --duration-slow: 350ms;
+  --duration-xl: 600ms;
+
+  /* === GLASS: variant tuning ===
+     backdrop-filter is expressed as a single var() per utility (see
+     globals.css) rather than a literal value, specifically so the
+     prefers-reduced-transparency fallback below can swap it to `none` by
+     overriding the variable - declaring backdrop-filter a second time for
+     the same selector gets silently dropped by this build's CSS minifier. */
+  --glass-light-bg: rgba(255, 255, 255, 0.55);
+  --glass-default-bg: rgba(255, 255, 255, 0.6);
+  --glass-strong-bg: rgba(255, 255, 255, 0.62);
+  --glass-dark-bg: rgba(10, 10, 10, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-strong-border: rgba(255, 255, 255, 0.75);
+  --glass-photo-bg: rgba(255, 255, 255, 0.62);
+  --glass-backdrop: blur(14px) saturate(150%);
+  --glass-backdrop-strong: blur(18px) saturate(160%);
+  --glass-backdrop-dark: blur(18px) saturate(150%);
+
+  color-scheme: light;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-light-bg: var(--bg-elevated);
+    --glass-default-bg: var(--bg-elevated);
+    --glass-strong-bg: var(--bg-elevated);
+    --glass-dark-bg: var(--bg-elevated);
+    --glass-photo-bg: #ffffff;
+    --glass-backdrop: none;
+    --glass-backdrop-strong: none;
+    --glass-backdrop-dark: none;
+  }
+}
+
+/* Dark theme - system preference, no manual toggle in this build */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #1c1c1c;
+    --bg-muted: #141414;
+    --bg-inverse: #ffffff;
+
+    --fg: #ffffff;
+    --fg-muted: #a0a0a0;
+    --fg-subtle: #6b6b6b;
+    --fg-on-dark: #0a0a0a;
+    --fg-on-dark-muted: rgba(0, 0, 0, 0.72);
+
+    --border: rgba(255, 255, 255, 0.12);
+    --border-strong: rgba(255, 255, 255, 0.2);
+    --border-soft: rgba(255, 255, 255, 0.06);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 24px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.3), 0 32px 64px rgba(0, 0, 0, 0.5);
+
+    --glass-light-bg: rgba(28, 28, 28, 0.6);
+    --glass-default-bg: rgba(28, 28, 28, 0.6);
+    --glass-strong-bg: rgba(28, 28, 28, 0.62);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-strong-border: rgba(255, 255, 255, 0.1);
+
+    color-scheme: dark;
+  }
+}
+
+/* Manual override hook - kept for future theme-toggle support */
+:root[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-elevated: #1c1c1c;
+  --bg-muted: #141414;
+  --bg-inverse: #ffffff;
+
+  --fg: #ffffff;
+  --fg-muted: #a0a0a0;
+  --fg-subtle: #6b6b6b;
+  --fg-on-dark: #0a0a0a;
+  --fg-on-dark-muted: rgba(0, 0, 0, 0.72);
+
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --border-soft: rgba(255, 255, 255, 0.06);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.3), 0 32px 64px rgba(0, 0, 0, 0.5);
+
+  --glass-light-bg: rgba(28, 28, 28, 0.6);
+  --glass-default-bg: rgba(28, 28, 28, 0.6);
+  --glass-strong-bg: rgba(28, 28, 28, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-strong-border: rgba(255, 255, 255, 0.1);
+
+  color-scheme: dark;
+}
