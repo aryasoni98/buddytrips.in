@@ -59,8 +59,9 @@ bun-debug.log*
 !.env.example
 !.env*.example
 
-# vercel
+# vercel / netlify
 .vercel
+.netlify
 
 # certificates / secrets
 *.pem
