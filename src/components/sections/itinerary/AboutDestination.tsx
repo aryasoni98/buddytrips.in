@@ -6,7 +6,7 @@ import type { Itinerary } from "@/data/itineraries";
 export function AboutDestination({ itinerary }: { itinerary: Itinerary }) {
   return (
     <section className="relative py-24">
-      <div className="mx-auto grid max-w-page grid-cols-1 items-center gap-9 px-8 tablet:grid-cols-2 tablet:gap-16">
+      <div className="page-wrap grid grid-cols-1 items-center gap-9 tablet:grid-cols-2 tablet:gap-16">
         <ScrollReveal>
           <div className="mb-3.5 text-caption text-blue-500">About the destination</div>
           <h2 className="mb-5 font-display text-display-md text-fg">A hidden gem in the Himalayas</h2>

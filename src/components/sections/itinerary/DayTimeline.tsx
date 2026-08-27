@@ -8,7 +8,7 @@ import type { Itinerary } from "@/data/itineraries";
 export function DayTimeline({ itinerary }: { itinerary: Itinerary }) {
   return (
     <section id="timeline" className="relative py-24">
-      <div className="mx-auto max-w-page px-8">
+      <div className="page-wrap">
         <SectionHeading
           eyebrow="Your journey"
           title="Day by day itinerary"

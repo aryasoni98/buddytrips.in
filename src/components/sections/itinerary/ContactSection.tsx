@@ -32,7 +32,7 @@ export function ContactSection({ itinerary }: { itinerary: Itinerary }) {
     // fixed dark too. bg-inverse flips to white in dark mode, which would
     // wash the cards out to flat gray.
     <section className="relative bg-[#0a0a0a] py-24">
-      <div className="mx-auto max-w-page px-8">
+      <div className="page-wrap">
         <ScrollReveal className="mx-auto mb-14 max-w-160 text-center">
           <div className="mb-3.5 text-caption text-blue-300">Get in touch</div>
           <h2 className="mb-4 font-display text-display-md text-white">Plan it with us directly</h2>

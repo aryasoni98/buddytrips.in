@@ -5,8 +5,8 @@ import type { Itinerary } from "@/data/itineraries";
 
 export function BookingCTA({ itinerary }: { itinerary: Itinerary }) {
   return (
-    <section className="px-8">
-      <ScrollReveal className="relative mx-auto max-w-page overflow-hidden rounded-2xl bg-[image:var(--wk-gradient)] shadow-xl">
+    <section className="page-wrap">
+      <ScrollReveal className="relative overflow-hidden rounded-2xl bg-[image:var(--wk-gradient)] shadow-xl">
         <div
           aria-hidden="true"
           className="absolute top-1/2 left-1/2 h-170 w-170 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[image:var(--wk-gradient-conic)] opacity-40 blur-[4.375rem] motion-safe:animate-[bt-spin_30s_linear_infinite]"

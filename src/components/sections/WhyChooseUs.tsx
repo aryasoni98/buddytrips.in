@@ -2,6 +2,7 @@ import { ArrowUpRightIcon } from "@/components/icons";
 import { GradientButton } from "@/components/ui/GradientButton";
 import { KenBurnsImage } from "@/components/ui/KenBurnsImage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Spotlight } from "@/components/ui/Spotlight";
 import { StatLink } from "@/components/ui/StatLink";
 import { site } from "@/data/site";
 
@@ -31,10 +32,14 @@ const FEATURES = [
 
 export function WhyChooseUs() {
   return (
-    <section id="why" className="relative overflow-hidden py-24">
+    <section id="why" className="relative overflow-hidden section-y">
       <div aria-hidden="true" className="pointer-events-none absolute top-[10%] -right-20 h-90 w-90 rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.18),transparent_70%)] blur-[3.125rem]" />
 
-      <div className="relative z-[1] mx-auto grid max-w-page grid-cols-1 items-center gap-9 px-8 mobile-l:grid-cols-[0.9fr_1.1fr] mobile-l:gap-16">
+      <div className="page-wrap relative z-[1] grid grid-cols-1 items-center gap-8 mobile:gap-9 mobile-l:grid-cols-[0.9fr_1.1fr] mobile-l:gap-16">
+        <ScrollReveal className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg mobile-l:hidden">
+          <KenBurnsImage src="/images/why/valley.jpg" alt="Himalayan river valley" sizes="100vw" />
+        </ScrollReveal>
+
         <ScrollReveal className="relative hidden h-120 mobile-l:block">
           <div className="absolute top-0 left-0 h-90 w-[74%] overflow-hidden rounded-2xl border border-white/60 shadow-xl motion-safe:animate-[bt-float_7s_var(--ease-in-out)_infinite]">
             <KenBurnsImage src="/images/why/valley.jpg" alt="Himalayan river valley" sizes="(max-width: 880px) 100vw, 30vw" />
@@ -73,7 +78,10 @@ export function WhyChooseUs() {
 
           <div className="flex flex-col gap-4.5">
             {FEATURES.map((feature) => (
-              <div key={feature.title} className="glass-light flex gap-4.5 rounded-2xl p-5.5">
+              <Spotlight
+                key={feature.title}
+                className="group glass-light relative flex gap-4.5 overflow-hidden rounded-2xl p-5.5"
+              >
                 <span className="inline-flex h-13.5 w-13.5 shrink-0 items-center justify-center rounded-[0.875rem] bg-[image:var(--wk-gradient)] text-white">
                   {feature.icon}
                 </span>
@@ -81,7 +89,7 @@ export function WhyChooseUs() {
                   <h3 className="mb-1.5 text-heading-md text-fg">{feature.title}</h3>
                   <p className="text-[0.9375rem] leading-[1.55] text-fg-muted">{feature.description}</p>
                 </div>
-              </div>
+              </Spotlight>
             ))}
           </div>
 

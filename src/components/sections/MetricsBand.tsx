@@ -10,8 +10,8 @@ const METRICS = [
 
 export function MetricsBand() {
   return (
-    <section className="px-8">
-      <ScrollReveal className="relative mx-auto max-w-page overflow-hidden rounded-2xl bg-[image:var(--wk-gradient)] shadow-xl">
+    <section className="page-wrap">
+      <ScrollReveal className="relative overflow-hidden rounded-2xl bg-[image:var(--wk-gradient)] shadow-xl">
         <svg aria-hidden="true" className="absolute inset-0 h-full w-full mix-blend-overlay opacity-40">
           <filter id="bt-noise">
             <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves={2} stitchTiles="stitch" />

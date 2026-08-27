@@ -43,16 +43,18 @@ export function Navbar() {
         scrolled ? "glass border-border py-2.5" : "border-transparent py-3.5",
       )}
     >
-      <div className="mx-auto flex max-w-page items-center justify-between gap-4 px-8">
-        <Link href="/#top" className="flex items-center gap-2.5">
+      <div className="page-wrap flex items-center justify-between gap-3">
+        <Link href="/#top" className="flex min-w-0 items-center gap-2 mobile-s:gap-2.5">
           <Image
             src="/images/brand/buddytrips.png"
             alt="Buddy Trips"
             width={46}
             height={46}
-            className="h-11.5 w-11.5 rounded-xl object-cover"
+            className="h-10 w-10 shrink-0 rounded-xl object-cover mobile-s:h-11.5 mobile-s:w-11.5"
           />
-          <span className="text-[1.3125rem] font-bold tracking-[-0.03em] text-fg">buddytrips</span>
+          <span className="truncate text-[1.125rem] font-bold tracking-[-0.03em] text-fg mobile-s:text-[1.3125rem]">
+            buddytrips
+          </span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8.5 mobile-l:flex">

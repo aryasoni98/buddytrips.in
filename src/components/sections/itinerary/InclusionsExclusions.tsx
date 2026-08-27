@@ -27,7 +27,7 @@ function ListCard({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: easeOutQuint }}
-      className="glass rounded-2xl p-10"
+      className="glass rounded-2xl p-5 mobile-s:p-10"
     >
       <div className="mb-6 flex items-center gap-3.5">
         <span className={`inline-flex h-11.5 w-11.5 items-center justify-center rounded-full ${iconClassName}`}>
@@ -53,7 +53,7 @@ function ListCard({
 export function InclusionsExclusions({ itinerary }: { itinerary: Itinerary }) {
   return (
     <section className="relative py-24">
-      <div className="mx-auto grid max-w-page grid-cols-1 gap-6 px-8 tablet:grid-cols-2">
+      <div className="page-wrap grid grid-cols-1 gap-6 tablet:grid-cols-2">
         <ListCard
           title="What's included"
           icon={<CheckCircleIcon size={22} className="text-white" />}

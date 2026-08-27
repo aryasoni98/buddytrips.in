@@ -4,13 +4,13 @@ import { site } from "@/data/site";
 
 export function FinalCTA() {
   return (
-    <section className="px-8 pb-24">
-      <ScrollReveal className="relative mx-auto max-w-page overflow-hidden rounded-[2rem] bg-bg-inverse shadow-xl">
+    <section className="page-wrap pb-16 mobile:pb-20 tablet:pb-24">
+      <ScrollReveal className="relative overflow-hidden rounded-[1.5rem] bg-bg-inverse shadow-xl mobile-s:rounded-[2rem]">
         <div
           aria-hidden="true"
           className="absolute -top-30 left-1/2 h-170 w-170 -translate-x-1/2 rounded-full bg-[image:var(--wk-gradient-conic)] opacity-55 blur-[4.375rem] motion-safe:animate-[bt-spin_30s_linear_infinite]"
         />
-        <div className="relative z-[1] px-8 py-22 text-center">
+        <div className="relative z-[1] px-5 py-14 text-center mobile-s:px-8 mobile:py-22">
           <h2 className="mx-auto mb-4.5 max-w-190 text-[clamp(2.25rem,4.4vw,3.75rem)] leading-[1.04] font-bold tracking-[-0.024em] text-fg-on-dark font-display">
             Your next adventure starts with <span className="text-gradient-animate">better trips</span>.
           </h2>

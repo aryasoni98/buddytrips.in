@@ -1,9 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import type { ReactNode } from "react";
 import { pressFeedback } from "@/lib/animations";
 import { cn } from "@/lib/utils";
+
+const MAGNETIC_RANGE = 8; // px, capped pull toward the cursor
 
 type GradientButtonVariant = "solid" | "glass" | "white";
 
@@ -31,13 +33,32 @@ export function GradientButton({
   className,
 }: GradientButtonProps) {
   const isExternal = href.startsWith("http");
+  const prefersReducedMotion = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, pressFeedback);
+  const springY = useSpring(y, pressFeedback);
+
+  function handlePointerMove(e: React.PointerEvent<HTMLAnchorElement>) {
+    if (prefersReducedMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set(((e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)) * MAGNETIC_RANGE);
+    y.set(((e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)) * MAGNETIC_RANGE);
+  }
+
+  function resetMagnetic() {
+    x.set(0);
+    y.set(0);
+  }
 
   return (
     <motion.a
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      whileHover={{ y: -2 }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetMagnetic}
+      style={{ x: springX, y: springY }}
       whileTap={{ scale: 0.97 }}
       transition={pressFeedback}
       className={cn(

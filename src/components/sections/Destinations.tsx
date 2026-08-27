@@ -7,8 +7,8 @@ import { destinations } from "@/data/destinations";
 
 export function Destinations() {
   return (
-    <section id="destinations" className="relative py-24">
-      <div className="mx-auto max-w-page px-8">
+    <section id="destinations" className="relative section-y">
+      <div className="page-wrap">
         <SectionHeading
           eyebrow="Destinations"
           title="Discover India's top destinations"
@@ -29,7 +29,7 @@ export function Destinations() {
                     duration={22 + (i % 3) * 2}
                     delay={-i * 3}
                     className="transition-transform duration-300 ease-out-quint group-hover:scale-[1.06]"
-                    sizes="(max-width: 720px) 50vw, 33vw"
+                    sizes="(max-width: 480px) 100vw, (max-width: 720px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent to-55%" />
                   <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">

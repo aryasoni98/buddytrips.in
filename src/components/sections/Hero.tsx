@@ -7,14 +7,14 @@ import { site } from "@/data/site";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-14 mobile-l:pt-43 mobile-l:pb-24">
+    <section id="top" className="relative overflow-hidden pt-24 pb-12 mobile:pt-28 mobile-l:pt-43 mobile-l:pb-24">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-15 -left-10 h-120 w-120 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(30,100,230,0.45),transparent_70%)] blur-[3.125rem] motion-safe:animate-[bt-orb_20s_var(--ease-in-out)_infinite]" />
         <div className="absolute top-30 -right-15 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_60%_40%,rgba(34,197,94,0.40),transparent_70%)] blur-[3.4375rem] motion-safe:animate-[bt-orb_24s_var(--ease-in-out)_infinite_reverse]" />
         <div className="absolute bottom-10 left-[42%] h-70 w-70 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(249,115,22,0.30),transparent_70%)] blur-[3.125rem] motion-safe:animate-[bt-orb_18s_var(--ease-in-out)_infinite]" />
       </div>
 
-      <div className="relative z-[2] mx-auto grid max-w-page grid-cols-1 gap-9 px-8 mobile-l:grid-cols-[1.05fr_0.95fr] mobile-l:gap-14 mobile-l:items-center">
+      <div className="page-wrap relative z-[2] grid grid-cols-1 gap-8 mobile:gap-9 mobile-l:grid-cols-[1.05fr_0.95fr] mobile-l:items-center mobile-l:gap-14">
         <div>
           <ScrollReveal className="glass-light mb-6.5 inline-flex items-center gap-2.5 rounded-full px-3.75 py-2">
             <span className="h-1.75 w-1.75 rounded-full bg-spark-500 shadow-[0_0_8px_var(--wk-spark-500)] motion-safe:animate-[bt-pulse_1.8s_var(--ease-in-out)_infinite]" />
@@ -51,14 +51,27 @@ export function Hero() {
             </GradientButton>
           </ScrollReveal>
 
-          <ScrollReveal delay={320} className="flex items-center gap-7.5">
+          <ScrollReveal delay={320} className="grid grid-cols-3 gap-3 mobile-s:flex mobile-s:items-center mobile-s:gap-7.5">
             <StatLink href="#reviews" value={site.metrics.travelers} label="Happy travelers" />
-            <div className="h-8.5 w-px bg-border" aria-hidden="true" />
+            <div className="hidden h-8.5 w-px bg-border mobile-s:block" aria-hidden="true" />
             <StatLink href="#destinations" value={site.metrics.destinations} label="Destinations" />
-            <div className="h-8.5 w-px bg-border" aria-hidden="true" />
+            <div className="hidden h-8.5 w-px bg-border mobile-s:block" aria-hidden="true" />
             <StatLink href="#reviews" value={`${site.rating}★`} label="Avg rating" />
           </ScrollReveal>
         </div>
+
+        <ScrollReveal delay={120} className="relative aspect-[5/4] overflow-hidden rounded-2xl shadow-lg mobile-l:hidden">
+          <KenBurnsImage
+            src="/images/hero/manali_kasol.jpg"
+            alt="Manali & Kasol"
+            priority
+            sizes="100vw"
+          />
+          <div className="glass-photo absolute bottom-3.5 left-3.5 rounded-xl px-3.5 py-2">
+            <div className="text-body-sm font-bold text-[#0A0A0A]">Manali &amp; Kasol</div>
+            <div className="text-[0.6875rem] text-[#0A0A0A]/60">Himachal Pradesh</div>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal delay={120} className="relative hidden h-135 mobile-l:block">
           <div className="absolute top-0 left-[8%] h-82.5 w-[62%] overflow-hidden rounded-2xl border border-white/60 shadow-xl motion-safe:animate-[bt-float_7s_var(--ease-in-out)_infinite]">

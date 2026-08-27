@@ -20,7 +20,7 @@ export function LegalPageShell({ title, path, lastUpdated, children }: LegalPage
           { name: title, url: `${site.url}${path}` },
         ])}
       />
-      <main className="mx-auto max-w-180 px-8 pt-32 pb-24 mobile-l:pt-40">
+      <main className="mx-auto w-full max-w-180 px-[var(--page-gutter)] pt-28 pb-16 mobile:pt-32 tablet:pt-40 tablet:pb-24">
         <nav aria-label="Breadcrumb" className="mb-6 text-body-sm text-fg-subtle">
           <Link href="/" className="hover:text-fg">
             Home

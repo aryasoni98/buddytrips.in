@@ -41,7 +41,7 @@ export function ItineraryHero({ itinerary }: { itinerary: Itinerary }) {
 
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="absolute inset-x-0 bottom-0 z-[1] px-8 pb-16 text-center tablet:pb-20"
+        className="absolute inset-x-0 bottom-0 z-[1] px-[var(--page-gutter)] pb-16 text-center tablet:pb-20"
       >
         <ScrollReveal className="mx-auto mb-6 inline-flex">
           <span className="glass-photo inline-flex items-center gap-2.5 rounded-full px-3.75 py-2">

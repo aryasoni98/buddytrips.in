@@ -24,7 +24,7 @@ const GALLERY_SPOTS: GallerySpot[] = [
 export function GalleryStrip({ itinerary }: { itinerary: Itinerary }) {
   return (
     <section className="relative overflow-hidden py-24">
-      <div className="mx-auto mb-10 max-w-page px-8">
+      <div className="page-wrap mb-10">
         <div className="mb-3.5 text-caption text-blue-500">The experience</div>
         <h2 className="font-display text-display-md text-fg">What you&apos;ll see</h2>
       </div>
@@ -33,7 +33,7 @@ export function GalleryStrip({ itinerary }: { itinerary: Itinerary }) {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-16 bg-linear-to-r from-bg to-transparent tablet:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-16 bg-linear-to-l from-bg to-transparent tablet:w-32" />
 
-        <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto px-8 pb-4 tablet:px-[calc((100vw-75rem)/2+2rem)]">
+        <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto px-[max(var(--page-gutter),calc((100vw-var(--container-page))/2+var(--page-gutter)))] pb-4">
           {GALLERY_SPOTS.map((spot, i) => (
             <ScrollReveal key={spot.label} delay={i * 60} className="shrink-0 snap-start">
               {spot.image ? (

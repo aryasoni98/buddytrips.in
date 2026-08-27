@@ -48,15 +48,15 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[linear-gradient(180deg,var(--bg)_0%,color-mix(in_srgb,var(--wk-blue-500)_9%,var(--bg))_100%)] px-8 pt-20 pb-16">
+    <footer className="relative overflow-hidden bg-[linear-gradient(180deg,var(--bg)_0%,color-mix(in_srgb,var(--wk-blue-500)_18%,var(--bg))_100%)] section-y">
       <p
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-[-0.18em] z-0 text-center font-display text-[clamp(4.5rem,16vw,12rem)] leading-none font-bold tracking-[-0.06em] text-fg/[0.045] select-none"
+        className="pointer-events-none absolute inset-x-0 bottom-[-0.18em] z-0 text-center font-display text-[clamp(4.5rem,16vw,12rem)] leading-none font-bold tracking-[-0.06em] text-fg/[0.12] select-none"
       >
         buddytrips
       </p>
 
-      <div className="relative z-[1] mx-auto grid max-w-page grid-cols-1 items-start gap-14 mobile-l:grid-cols-[1fr_auto_1fr] mobile-l:gap-10">
+      <div className="page-wrap relative z-[1] grid grid-cols-1 items-start gap-10 mobile-s:grid-cols-2 mobile-l:grid-cols-[1fr_auto_1fr] mobile-l:gap-10">
         <div className="flex max-w-72 flex-col">
           <div className="mb-6 flex gap-2.5">
             <SocialIcon href={site.instagram} label="Instagram">
@@ -86,13 +86,13 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-8 self-stretch text-center">
+        <div className="flex flex-col items-center justify-between gap-8 self-stretch text-center mobile-s:col-span-2 mobile-l:col-span-1">
           <DotGrid />
           <a
             href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-xl bg-fg px-8 py-3.5 text-[0.9375rem] font-semibold text-bg transition-transform duration-200 ease-out-quint hover:scale-[1.04] active:scale-[0.97] motion-reduce:transition-none motion-reduce:hover:scale-100"
+            className="inline-flex items-center justify-center rounded-xl bg-bg-inverse px-8 py-3.5 text-[0.9375rem] font-semibold text-fg-on-dark transition-transform duration-200 ease-out-quint hover:scale-[1.04] active:scale-[0.97] motion-reduce:transition-none motion-reduce:hover:scale-100"
           >
             Start your journey
           </a>
@@ -102,7 +102,7 @@ export function Footer() {
           </p>
         </div>
 
-        <nav aria-label="Footer" className="flex flex-col items-start gap-3 mobile-l:items-end">
+        <nav aria-label="Footer" className="flex flex-col items-start gap-3 mobile-s:items-end">
           {NAV_LINKS.map((link) =>
             link.href.startsWith("/") && !link.href.startsWith("/#") ? (
               <Link

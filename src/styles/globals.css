@@ -73,8 +73,8 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Editorial max-width - tighter than the 1280px default */
-  --container-page: 75rem;
+  /* Page shell: fills a 14" laptop, still breathes on ultrawide */
+  --container-page: 90rem;
 
   /* DESIGN.md §9 breakpoints - used as max-{name}: variants (desktop-first
      cascade, matching the charter's own <= phrasing) alongside Tailwind's
@@ -131,9 +131,11 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 button {
@@ -228,6 +230,25 @@ svg {
   backdrop-filter: var(--glass-backdrop-strong);
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow: var(--shadow-lg);
+}
+
+/* Gradient text - never on body copy */
+/* Shared page width + device gutters. 20px on phones, up to 48px on desktop.
+   Safe-area insets cover notched iPhones. */
+:root {
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+@utility page-wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-page);
+  padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+}
+
+@utility section-y {
+  padding-block: clamp(4rem, 8vw, 6rem);
 }
 
 /* Gradient text - never on body copy */

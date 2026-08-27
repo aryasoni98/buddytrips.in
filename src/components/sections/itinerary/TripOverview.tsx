@@ -1,5 +1,6 @@
 import { BedIcon, BusIcon, HeadsetIcon, UtensilsIcon } from "@/components/icons";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Spotlight } from "@/components/ui/Spotlight";
 import type { Itinerary } from "@/data/itineraries";
 import type { ReactNode } from "react";
 
@@ -16,7 +17,7 @@ function OverviewCard({
 }) {
   return (
     <ScrollReveal delay={delay}>
-      <div className="group glass-light flex h-full flex-col gap-4 rounded-2xl p-6 transition-[transform,box-shadow] duration-300 ease-out-quint hover:-translate-y-1.5 hover:shadow-lg">
+      <Spotlight className="group glass-light relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl p-6 transition-[transform,box-shadow] duration-300 ease-out-quint hover:-translate-y-1.5 hover:shadow-lg">
         <span className="inline-flex h-13.5 w-13.5 items-center justify-center rounded-2xl bg-[image:var(--wk-gradient)] text-white transition-transform duration-300 ease-out-quint group-hover:scale-110">
           {icon}
         </span>
@@ -24,7 +25,7 @@ function OverviewCard({
           <h3 className="mb-1.5 text-heading-md text-fg">{title}</h3>
           <p className="text-body-sm leading-[1.55] text-fg-muted">{description}</p>
         </div>
-      </div>
+      </Spotlight>
     </ScrollReveal>
   );
 }
@@ -57,7 +58,7 @@ export function TripOverview({ itinerary }: { itinerary: Itinerary }) {
 
   return (
     <section className="relative bg-bg-muted py-24">
-      <div className="mx-auto max-w-page px-8">
+      <div className="page-wrap">
         <div className="grid grid-cols-1 gap-5 mobile:grid-cols-2 tablet:grid-cols-4">
           {cards.map((card, i) => (
             <OverviewCard key={card.title} {...card} delay={i * 80} />

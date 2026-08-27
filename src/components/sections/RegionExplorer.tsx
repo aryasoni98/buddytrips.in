@@ -25,11 +25,11 @@ export function RegionExplorer() {
   const region = regions[active];
 
   return (
-    <section id="explore" className="relative overflow-hidden py-24">
+    <section id="explore" className="relative overflow-hidden section-y">
       <div aria-hidden="true" className="pointer-events-none absolute top-[8%] -left-22.5 h-95 w-95 rounded-full bg-[radial-gradient(circle,rgba(30,100,230,0.14),transparent_70%)] blur-[3.4375rem]" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-[4%] -right-22.5 h-95 w-95 rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.14),transparent_70%)] blur-[3.4375rem]" />
 
-      <div className="relative z-[1] mx-auto max-w-page px-8">
+      <div className="page-wrap relative z-[1]">
         <SectionHeading
           eyebrow="Explore by region"
           title="A closer look at every region"
@@ -86,7 +86,7 @@ export function RegionExplorer() {
                   </div>
                 </div>
 
-                <div className="p-8.5 mobile-l:p-9">
+                <div className="p-5 mobile-s:p-8.5 mobile-l:p-9">
                   <p className="mb-5.5 text-body-md text-fg-muted">{region.blurb}</p>
                   <div className="mb-6.5 grid grid-cols-1 gap-3 mobile-s:grid-cols-3">
                     <StatCard label="Best season" value={region.season} />

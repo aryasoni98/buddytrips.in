@@ -5,8 +5,8 @@ import { reviews } from "@/data/reviews";
 
 export function Testimonials() {
   return (
-    <section id="reviews" className="relative py-24">
-      <div className="mx-auto max-w-page px-8">
+    <section id="reviews" className="relative section-y">
+      <div className="page-wrap">
         <SectionHeading eyebrow="Reviews" title="Loved by travelers across India" />
 
         <div className="grid grid-cols-1 items-start gap-6 mobile:grid-cols-2 tablet:grid-cols-3">

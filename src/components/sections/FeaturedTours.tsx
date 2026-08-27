@@ -1,14 +1,15 @@
 import { ChevronRightIcon, PinIcon, StarIcon } from "@/components/icons";
 import { KenBurnsImage } from "@/components/ui/KenBurnsImage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Spotlight } from "@/components/ui/Spotlight";
 import { WishlistButton } from "@/components/ui/WishlistButton";
 import { site } from "@/data/site";
 import { tours } from "@/data/tours";
 
 export function FeaturedTours() {
   return (
-    <section id="tours" className="relative bg-bg-muted py-24">
-      <div className="mx-auto max-w-page px-8">
+    <section id="tours" className="relative bg-bg-muted section-y">
+      <div className="page-wrap">
         <ScrollReveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-150">
             <div className="mb-3.5 text-caption text-blue-500">Featured tours</div>
@@ -31,7 +32,7 @@ export function FeaturedTours() {
         <div className="grid grid-cols-1 gap-6 mobile:grid-cols-2 tablet:grid-cols-3">
           {tours.map((tour, i) => (
             <ScrollReveal key={tour.slug} delay={(i % 3) * 80}>
-              <div className="group relative overflow-hidden rounded-xl border border-border bg-bg-elevated shadow-sm transition-[transform,box-shadow] duration-300 ease-out-quint hover:-translate-y-1.5 hover:shadow-lg">
+              <Spotlight className="group relative overflow-hidden rounded-xl border border-border bg-bg-elevated shadow-sm transition-[transform,box-shadow] duration-300 ease-out-quint hover:-translate-y-1.5 hover:shadow-lg">
                 <div className="relative h-57.5 overflow-hidden">
                   <KenBurnsImage
                     src={tour.image}
@@ -73,7 +74,7 @@ export function FeaturedTours() {
                   aria-label={`Book ${tour.title} on WhatsApp`}
                   className="absolute inset-0 z-[1]"
                 />
-              </div>
+              </Spotlight>
             </ScrollReveal>
           ))}
         </div>

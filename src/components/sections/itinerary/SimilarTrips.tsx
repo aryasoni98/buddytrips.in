@@ -10,7 +10,7 @@ export function SimilarTrips() {
 
   return (
     <section className="relative bg-bg-muted py-24">
-      <div className="mx-auto max-w-page px-8">
+      <div className="page-wrap">
         <SectionHeading
           eyebrow="More adventures"
           title="Explore similar trips"
