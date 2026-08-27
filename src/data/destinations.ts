@@ -2,7 +2,6 @@ export interface Destination {
   name: string;
   image: string;
   listings: number;
-  featured?: boolean;
 }
 
 export const destinations: Destination[] = [
@@ -10,7 +9,6 @@ export const destinations: Destination[] = [
     name: "Himachal Pradesh",
     image: "/images/destinations/himachal_pradesh.png",
     listings: 8,
-    featured: true,
   },
   {
     name: "Uttarakhand",
@@ -31,5 +29,10 @@ export const destinations: Destination[] = [
     name: "Meghalaya",
     image: "/images/destinations/meghalaya.png",
     listings: 4,
+  },
+  {
+    name: "Goa",
+    image: "/images/destinations/goa.png",
+    listings: 3,
   },
 ];
