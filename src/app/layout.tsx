@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/data/site";
 import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
+import { themeInitScript } from "@/lib/theme";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -72,7 +73,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <JsonLd data={[getOrganizationJsonLd(), getWebsiteJsonLd()]} />
         <div className="relative min-h-screen bg-bg">

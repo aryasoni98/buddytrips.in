@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GradientButton } from "@/components/ui/GradientButton";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { MobileMenu } from "./MobileMenu";
@@ -66,22 +67,26 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden mobile-l:block">
-          <GradientButton href={site.whatsapp}>Start your journey</GradientButton>
-        </div>
+        <div className="flex items-center gap-2.5">
+          <div className="hidden mobile-l:block">
+            <GradientButton href={site.whatsapp}>Start your journey</GradientButton>
+          </div>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          className="glass inline-flex h-11 w-11 items-center justify-center rounded-xl text-fg mobile-l:hidden"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-            {menuOpen ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
-          </svg>
-        </button>
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            className="glass inline-flex h-11 w-11 items-center justify-center rounded-xl text-fg mobile-l:hidden"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+              {menuOpen ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
+            </svg>
+          </button>
+        </div>
       </div>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} links={NAV_LINKS} />

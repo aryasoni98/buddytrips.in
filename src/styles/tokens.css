@@ -95,40 +95,9 @@
   }
 }
 
-/* Dark theme - system preference, no manual toggle in this build */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0a0a0a;
-    --bg-elevated: #1c1c1c;
-    --bg-muted: #141414;
-    --bg-inverse: #ffffff;
-
-    --fg: #ffffff;
-    --fg-muted: #a0a0a0;
-    --fg-subtle: #6b6b6b;
-    --fg-on-dark: #0a0a0a;
-    --fg-on-dark-muted: rgba(0, 0, 0, 0.72);
-
-    --border: rgba(255, 255, 255, 0.12);
-    --border-strong: rgba(255, 255, 255, 0.2);
-    --border-soft: rgba(255, 255, 255, 0.06);
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 24px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.4);
-    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.3), 0 32px 64px rgba(0, 0, 0, 0.5);
-
-    --glass-light-bg: rgba(28, 28, 28, 0.6);
-    --glass-default-bg: rgba(28, 28, 28, 0.6);
-    --glass-strong-bg: rgba(28, 28, 28, 0.62);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-strong-border: rgba(255, 255, 255, 0.1);
-
-    color-scheme: dark;
-  }
-}
-
-/* Manual override hook - kept for future theme-toggle support */
+/* Dark theme - manual toggle only (ThemeToggle sets data-theme, see
+   src/components/ui/ThemeToggle.tsx). Site defaults to light regardless of
+   OS preference; dark only activates when the user explicitly opts in. */
 :root[data-theme="dark"] {
   --bg: #0a0a0a;
   --bg-elevated: #1c1c1c;

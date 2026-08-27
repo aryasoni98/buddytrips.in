@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function CookiePolicyPage() {
   return (
-    <LegalPageShell title="Cookie Policy" path="/cookie-policy" lastUpdated="August 25, 2026">
+    <LegalPageShell title="Cookie Policy" path="/cookie-policy" lastUpdated="August 27, 2026">
       <p>This Cookie Policy explains how {site.name} uses cookies and similar technologies on the Site.</p>
 
       <h2>What are cookies?</h2>
@@ -22,9 +22,9 @@ export default function CookiePolicyPage() {
       <h2>What this Site uses today</h2>
       <p>
         The Site is a straightforward informational and booking-enquiry site - we don&apos;t use advertising
-        cookies, and we don&apos;t currently run third-party analytics tracking. The Site doesn&apos;t set any
-        non-essential cookies today; light and dark appearance simply follows your device&apos;s system
-        setting automatically, with nothing stored on your device to remember it.
+        cookies, and we don&apos;t currently run third-party analytics tracking. Appearance defaults to light.
+        If you switch to dark mode, that choice is stored in your browser&apos;s local storage on this device
+        only, so it persists on your next visit. We don&apos;t use that value for advertising or analytics.
       </p>
 
       <h2>Third-party content</h2>
