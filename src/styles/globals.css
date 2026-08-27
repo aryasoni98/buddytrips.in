@@ -302,40 +302,6 @@ svg {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
-@keyframes bt-sun {
-  0%, 100% { transform: translateY(0); opacity: 0.96; }
-  50% { transform: translateY(-7px); opacity: 1; }
-}
-@keyframes bt-drift {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-13px); }
-}
-@keyframes bt-drift-b {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(11px); }
-}
-@keyframes bt-cloud {
-  from { transform: translateX(-180px); }
-  to { transform: translateX(800px); }
-}
-@keyframes bt-bird {
-  from { transform: translate(-60px, 10px); }
-  to { transform: translate(740px, -30px); }
-}
-@keyframes bt-plane {
-  from { offset-distance: 0%; }
-  to { offset-distance: 100%; }
-}
-@keyframes bt-trail {
-  to { stroke-dashoffset: -160; }
-}
-@keyframes bt-fall {
-  to { stroke-dashoffset: -28; }
-}
-@keyframes bt-shimmer {
-  0%, 100% { opacity: 0.35; transform: translateX(0); }
-  50% { opacity: 0.6; transform: translateX(8px); }
-}
 
 /* =========================================================
    ACCESSIBILITY FALLBACKS (non-negotiable, DESIGN.md §6, §7)

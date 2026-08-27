@@ -1,24 +1,15 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 import { PinIcon } from "@/components/icons";
 import { MonthlyChart } from "@/components/ui/MonthlyChart";
-import { RegionScene } from "@/components/ui/RegionScene";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { regions } from "@/data/regions";
 import { easeOutQuint } from "@/lib/animations";
 import { cn } from "@/lib/utils";
-
-function CompassIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" />
-      <polygon points="16.2 7.8 14 14 7.8 16.2 10 10" />
-    </svg>
-  );
-}
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
@@ -75,23 +66,23 @@ export function RegionExplorer() {
                 transition={{ duration: 0.35, ease: easeOutQuint }}
                 className="grid grid-cols-1 mobile-l:grid-cols-[1.05fr_1.2fr]"
               >
-                <div className="relative min-h-120 overflow-hidden">
-                  <RegionScene region={region} />
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.42)_0%,transparent_38%),linear-gradient(to_right,transparent_74%,rgba(10,10,10,0.18))]" />
+                <div className="group relative min-h-120 overflow-hidden">
+                  <Image
+                    src={region.image}
+                    alt={region.name}
+                    fill
+                    sizes="(max-width: 880px) 100vw, 45vw"
+                    className="object-cover transition-transform duration-500 ease-out-quint group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.42)_0%,transparent_38%)]" />
                   <div className="glass-photo absolute top-5.5 left-5.5 inline-flex items-center gap-2 rounded-full px-3.5 py-2">
-                    <span className="h-1.75 w-1.75 rounded-full bg-spark-500 shadow-[0_0_8px_var(--wk-spark-500)]" />
+                    <span className="h-1.75 w-1.75 rounded-full bg-spark-500" />
                     <span className="text-[0.75rem] font-bold text-[#0A0A0A]">{region.tag}</span>
                   </div>
                   <div className="absolute inset-x-5.5 bottom-5.5">
                     <div className="font-display text-[1.875rem] font-bold leading-tight tracking-[-0.02em] text-white">
                       {region.name}
                     </div>
-                  </div>
-                  <div className="absolute top-4.5 right-4.5 flex h-18.5 w-18.5 items-center justify-center">
-                    <div className="absolute inset-0 rounded-full border-[1.5px] border-dashed border-white/70 motion-safe:animate-[bt-spin_22s_linear_infinite]" />
-                    <span className="inline-flex h-11.5 w-11.5 items-center justify-center rounded-full bg-white/85 text-[#0A0A0A] backdrop-blur-sm">
-                      <CompassIcon />
-                    </span>
                   </div>
                 </div>
 
